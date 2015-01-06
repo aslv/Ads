@@ -1,3 +1,13 @@
 .improve-margins {
 	margin: 0 15px;
 }
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+header h1 {
+	margin-top: 0;
+}
+ul li {
+	list-style-type: none;
+}

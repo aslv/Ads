@@ -1,1 +1,34 @@
-<h2>Home</h2>
+<ul>
+	<li ng-repeat="ad in ads.ads">
+		<div class="well">
+			<header class="row">
+				<h1 class="col-md-9">{{ ad.title }}</h1>
+				<span class="col-md-3">{{ ad.date | date:'d-MMM-yyyy' }}</span>
+			</header>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="well well-sm">
+						<img src="" ng-src="{{ ad.imageDataUrl }}" alt="{{ ad.title }}" />
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="well">
+						{{ ad.text }}
+					</div>
+					<div class="row">
+						<div class="col-md-2">
+							<div><strong>Name</strong></div>
+							<div><strong>Email</strong></div>
+							<div><strong>Phone</strong></div>
+						</div>
+						<div class="col-md-10">
+							<div class="well well-sm">{{ ad.ownerName }}</div>
+							<div class="well well-sm"><a href="mailto:{{ ad.ownerEmail }}">{{ ad.ownerEmail }}<a></div>
+							<div class="well well-sm">{{ ad.ownerPhone }}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</li>
+</ul>
