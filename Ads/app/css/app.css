@@ -8,6 +8,9 @@ img {
 header h1 {
 	margin-top: 0;
 }
+header span {
+	vertical-align: middle;
+}
 ul li {
 	list-style-type: none;
 }
