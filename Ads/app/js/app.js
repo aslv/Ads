@@ -5,16 +5,16 @@ adsApp.constant('baseUrl', 'http://softuni-ads.azurewebsites.net/api/');
 adsApp.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
 		.when('/', {
-			templateUrl: '',
-			controller: ''
+			templateUrl: 'templates/user/home.html',
+			controller: 'HomeController'
 		})
 		.when('/login', {
-			templateUrl: '',
-			controller: ''
+			templateUrl: 'templates/user/login.html',
+			controller: 'LoginController'
 		})
 		.when('/register', {
-			templateUrl: '',
-			controller: ''
+			templateUrl: 'templates/user/register.html',
+			controller: 'RegisterController'
 		})
 		.when('/ads', {
 			templateUrl: '',
