@@ -6,8 +6,8 @@
 		<div class="panel-body">
 	  		<a href="#/" class="btn btn-link btn-block">Home</a>
 	  		<a href="#/user/ads" class="btn btn-link btn-block" ng-show="user.isNormalUser()">My Ads</a>
-	  		<a href="#/user/publish" class="btn btn-link btn-block" ng-show="user.isNormalUser()">Publish New Ad</a>
-	  		<a href="#/user/edit/profile" class="btn btn-link btn-block" ng-show="user.isNormalUser()">Edit Profile</a>
+	  		<a href="#/user/ads/publish" class="btn btn-link btn-block" ng-show="user.isNormalUser()">Publish New Ad</a>
+	  		<a href="#/user/profile/edit" class="btn btn-link btn-block" ng-show="user.isNormalUser()">Edit Profile</a>
 	  		<!-- TODO: Admin panel -->
 		</div>
 	</div>

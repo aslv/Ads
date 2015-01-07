@@ -8,6 +8,14 @@ adsApp.factory('notify', function () {
                 timeout: 1000
             });*/window.alert(message);
 		},
+        warn: function (message) {/*
+            noty({
+                text: message,
+                type: 'warn',
+                layout: 'topCenter',
+                timeout: 1000
+            });*/window.alert(message);
+        },
 		error: function (message, error) {/*
 			var errors = [];
             if (serverError && serverError.error_description) {

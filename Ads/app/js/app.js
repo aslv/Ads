@@ -2,7 +2,7 @@ var adsApp = angular.module('adsApp', ['ngRoute', 'ngResource', 'ngStorage', 'ui
 
 adsApp.constant('baseUrl', 'http://softuni-ads.azurewebsites.net/api/');
 
-adsApp.config(['$routeProvider', function($routeProvider) {
+adsApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 	$routeProvider
 		.when('/', {
 			templateUrl: 'templates/user/home.html',
@@ -16,15 +16,31 @@ adsApp.config(['$routeProvider', function($routeProvider) {
 			templateUrl: 'templates/user/register.html',
 			controller: 'RegisterController'
 		})
-		.when('/ads', {
-			templateUrl: '',
-			controller: ''
-		})
 		.when('/user/ads', {
-			templateUrl: '',
-			controller: ''
+			templateUrl: 'templates/user/home.html',
+			controller: 'HomeController'
+		})
+		.when('/user/ads/publish', {
+			templateUrl: 'templates/user/publish-new-ad.html',
+			controller: 'UserPublishNewAdController'
 		})
 		.otherwise({
 			redirectTo: '/'
 		});
+	//$locationProvider.html5Mode(true);
+	/*	
+	$locationProvider.html5Mode({
+		enabled: true,
+		requireBase: false
+	});
+	*/
+}]);
+
+adsApp.run(['$rootScope', '$location', 'user', 'notify', function($rootScope, $location, user, notify) {
+	$rootScope.$on('$locationChangeStart', function (_) {
+		if ($location.path().indexOf('/user/') != -1 && !user.isLoggedIn()) {
+			notify.warn('Only authorized users can access this resource!');
+			$location.path('/');
+		}
+	});
 }]);
