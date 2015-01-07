@@ -7,7 +7,7 @@ adsApp.controller('HomeController', ['$scope', '$rootScope', 'ads', 'notify', fu
 		loadAds($scope.adsParams);
 	}
 	$scope.reloadAds();
-	console.log($scope.user);
+	
 	function loadAds(params) {
 		ads.getAds(
 		params,
