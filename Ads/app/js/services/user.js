@@ -14,14 +14,18 @@ adsApp.factory('user', ['$http', 'baseUrl', function ($http, baseUrl) {
         },
         isAnonymous : function() {
             // TODO
+            return true;
         },
         isLoggedIn : function() {
             // TODO
+            return false;
         },
         isNormalUser : function() {
+            return false;
             // TODO
         },
         isAdmin : function() {
+            return false;
             // TODO
         },
         getAuthHeaders : function() {
