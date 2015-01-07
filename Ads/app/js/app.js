@@ -1,4 +1,4 @@
-var adsApp = angular.module('adsApp', ['ngRoute', 'ngResource', 'ui.bootstrap.pagination']);
+var adsApp = angular.module('adsApp', ['ngRoute', 'ngResource', 'ngStorage', 'ui.bootstrap.pagination']);
 
 adsApp.constant('baseUrl', 'http://softuni-ads.azurewebsites.net/api/');
 

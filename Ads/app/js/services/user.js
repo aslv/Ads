@@ -1,35 +1,56 @@
-adsApp.factory('user', ['$http', 'baseUrl', function ($http, baseUrl) {
+adsApp.factory('user', ['$http', '$sessionStorage', 'baseUrl', function ($http, $sessionStorage, baseUrl) {
 	return {
 		login: function(userData, success, error) {
-            // TODO
+            var request = {
+                method: 'POST',
+                url: baseUrl + 'user/login',
+                data: userData
+            };
+            $http(request)
+                .success(function (data) {
+                    $sessionStorage.adsUser = data;
+                    success(data);
+                })
+                .error(error);
         },
         register: function(userData, success, error) {
-            // TODO
+            var request = {
+                method: 'POST',
+                url: baseUrl + 'user/register',
+                data: userData
+            };
+            $http(request)
+                .success(function (data) {
+                    $sessionStorage.adsUser = data;
+                    success(data);
+                })
+                .error(error);
         },
         logout: function() {
-            // TODO
+            delete $sessionStorage.adsUser;
         },
         getCurrentUser : function() {
-            // TODO
+            return $sessionStorage.adsUser;
         },
-        isAnonymous : function() {
-            // TODO
-            return true;
+        isAnonymous : function() {  
+            return this.getCurrentUser() == undefined;
         },
         isLoggedIn : function() {
-            // TODO
-            return false;
+            return !this.isAnonymous();
         },
         isNormalUser : function() {
-            return false;
-            // TODO
+            return this.isLoggedIn() && (!this.getCurrentUser().isAdmin);
         },
         isAdmin : function() {
-            return false;
-            // TODO
+            return this.isLoggedIn() && (!!this.getCurrentUser().isAdmin);
         },
         getAuthHeaders : function() {
-            // TODO
+            var headers = {};
+            var currentUser = this.getCurrentUser();
+            if (currentUser) {
+                headers.Authorization = 'Bearer ' + currentUser.access_token;
+            }
+            return headers;
         }
 	};
 }]);

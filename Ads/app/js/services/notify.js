@@ -1,14 +1,14 @@
 adsApp.factory('notify', function () {
 	return {
-		info: function (message) {
+		info: function (message) {/*
 			noty({
-                text: msg,
+                text: message,
                 type: 'info',
                 layout: 'topCenter',
                 timeout: 1000
-            });
+            });*/window.alert(message);
 		},
-		error: function (message, error) {
+		error: function (message, error) {/*
 			var errors = [];
             if (serverError && serverError.error_description) {
                 errors.push(serverError.error_description);
@@ -26,14 +26,14 @@ adsApp.factory('notify', function () {
                 }
             }
             if (errors.length > 0) {
-                msg = msg + ":<br>" + errors.join("<br>");
+                message = message + ":<br>" + errors.join("<br>");
             }
             noty({
-                text: msg,
+                text: message,
                 type: 'error',
                 layout: 'topCenter',
                 timeout: 5000
-            });
+            });*/window.alert(message + ' ' + error);
 		}
 	};
 });

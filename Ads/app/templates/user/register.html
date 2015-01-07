@@ -5,7 +5,7 @@
 	    <div class="improve-margins">
 		    <div class="form-group">
 		    	<label for="inputUsername" class="control-label">Username</label>
-		    	<input type="text" required class="form-control" id="inputUsername" placeholder="Username" ng-model="user.userName">
+		    	<input type="text" required class="form-control" id="inputUsername" placeholder="Username" ng-model="user.username">
 		    </div>
 	    </div>
 	    <div class="row">
@@ -37,7 +37,7 @@
 				    </div>
 				    <div class="form-group">
 					    <label for="inputTown" class="control-label">Town</label>
-					    <select class="form-control" id="inputTown" ng-model="selectedTown" ng-model="user.town"></select>
+					    <select class="form-control" id="inputTown" ng-model="selectedTown" ng-model="user.townId"></select>
 				    </div>
 			    </div>
 	    	</div>
@@ -45,7 +45,7 @@
 	    <div class="form-group">
 	      <div class="improve-margins">
 	        <a href="#/login" class="btn btn-default">Login</a>
-	        <button class="btn btn-primary">Register</button>
+	        <button class="btn btn-primary" ng-click="register(user)">Register</button>
 	      </div>
 	    </div>
 	  </fieldset>
