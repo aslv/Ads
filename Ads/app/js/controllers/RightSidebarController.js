@@ -1,4 +1,4 @@
-adsApp.controller('RightSidebarController', ['$scope', 'categories', 'towns', 'notify', function($scope, categories, towns, notify) {
+adsApp.controller('RightSidebarController', ['$scope', '$rootScope', 'categories', 'towns', 'notify', function($scope, $rootScope, categories, towns, notify) {
 	categories.getCategories()
 		.$promise
 		.then(
@@ -11,6 +11,7 @@ adsApp.controller('RightSidebarController', ['$scope', 'categories', 'towns', 'n
 		);
 	$scope.categoryClicked = function (clickedCategoryId) {
 		$scope.selectedCategoryId = clickedCategoryId;
+		$rootScope.$broadcast('categorySelected', clickedCategoryId);
 	}
 	
 	towns.getTowns()
@@ -25,5 +26,6 @@ adsApp.controller('RightSidebarController', ['$scope', 'categories', 'towns', 'n
 		);
 	$scope.townClicked = function (clickedTownId) {
 		$scope.selectedTownId = clickedTownId;
+		$rootScope.$broadcast('townSelected', clickedTownId);
 	}
 }]);
