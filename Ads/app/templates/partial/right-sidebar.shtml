@@ -1,0 +1,24 @@
+<div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+	  		<h3 class="panel-title">Categories</h3>
+		</div>
+		<div class="panel-body">
+			<ul>
+				<li><a href="#" class="btn btn-link"><em>All</em></a></li>
+				<li><a href="#" class="btn btn-link">Category</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+	  		<h3 class="panel-title">Towns</h3>
+		</div>
+		<div class="panel-body">
+			<ul>
+				<li><a href="#" class="btn btn-link"><em>All</em></a></li>
+				<li><a href="#" class="btn btn-link">Town</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
