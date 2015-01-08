@@ -20,13 +20,18 @@ adsApp.controller('HomeController', ['$scope', '$rootScope', 'ads', 'notify', fu
 	$scope.reloadAds();
 	
 	function loadAds(params) {
+		$scope.adsLoading = true;
 		ads.getAds(
-		params,
-		function success(data) {
-			$scope.ads = data;
-		},
-		function error(error) {
-			notify.error('An error occured while loading ads.', error);
-		});
+			params,
+			function success(data) {
+				$scope.ads = data;
+			},
+			function error(error) {
+				notify.error('An error occured while loading ads.', error);
+			},
+			function loaded() {
+				$scope.adsLoading = false;
+			}
+		);
 	}
 }]);

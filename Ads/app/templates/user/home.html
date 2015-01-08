@@ -10,6 +10,9 @@
 		</pagination>
 	</div>
 </div>
+<div ng-show="adsLoading">
+	<img src="images/loading.gif" />
+</div>
 <ul>
 	<li ng-repeat="ad in ads.ads">
 		<div class="well">
@@ -69,3 +72,10 @@
 		</div>
 	</li>
 </ul>
+<div ng-if="ads.numItems == 0">
+	<div class="alert alert-dismissable alert-warning">
+	  <button type="button" class="close" data-dismiss="alert">×</button>
+	  <h4>No ads</h4>
+	  <p>There are no ads with the required parametres, best change your filters or check <a href="#/user/ads" class="alert-link">your ads</a>.</p>
+	</div>
+</div>
