@@ -1,5 +1,6 @@
 adsApp.factory('user', ['$http', '$sessionStorage', 'baseUrl', function ($http, $sessionStorage, baseUrl) {
 	return {
+        // IO actions
 		login: function(userData, success, error) {
             var request = {
                 method: 'POST',
@@ -29,6 +30,7 @@ adsApp.factory('user', ['$http', '$sessionStorage', 'baseUrl', function ($http, 
         logout: function() {
             delete $sessionStorage.adsUser;
         },
+        // authentications
         getCurrentUser : function() {
             return $sessionStorage.adsUser;
         },
@@ -51,6 +53,31 @@ adsApp.factory('user', ['$http', '$sessionStorage', 'baseUrl', function ($http, 
                 headers.Authorization = 'Bearer ' + currentUser.access_token;
             }
             return headers;
+        },
+        // publish actions
+        publishNewAd: function (adData, success, error) {
+            var request = {
+                method: 'POST',
+                url: baseUrl + 'user/ads',
+                headers: this.getAuthHeaders(),
+                data: adData
+            };
+            $http(request).success(success).error(error);
+        },
+        getUserAds: function (params, success, error) {
+            var request = {
+                method: 'GET',
+                url: baseUrl + 'user/ads',
+                headers: this.getAuthHeaders(),
+                params: params
+            };
+            $http(request).success(success).error(error);
+        },
+        deactivateAd: function () {
+            // TODO:
+        },
+        publishAdAgain: function () {
+            // TODO:
         }
 	};
 }]);
