@@ -64,14 +64,17 @@ adsApp.factory('user', ['$http', '$sessionStorage', 'baseUrl', function ($http, 
             };
             $http(request).success(success).error(error);
         },
-        getUserAds: function (params, success, error) {
+        getUserAds: function (params, success, error, loaded) {
             var request = {
                 method: 'GET',
                 url: baseUrl + 'user/ads',
                 headers: this.getAuthHeaders(),
                 params: params
             };
-            $http(request).success(success).error(error);
+            // $http(request).success(success).error(error);
+            $http(request)
+                .then(success, error)
+                .finally(loaded);
         },
         deactivateAd: function () {
             // TODO:

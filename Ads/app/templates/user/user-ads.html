@@ -24,39 +24,45 @@
 						<div class="row">
 							<div class="row">
 								<div class="col-md-2">
-									<div><strong>Name</strong></div>
+									<div><strong>Category</strong></div>
 								</div>
 								<div class="col-md-10">
-									<div class="well well-sm">{{ ad.ownerName }}</div>
-									<!--<div class="panel panel-default"><div class="panel-body">{{ ad.ownerName }}</div></div>-->
+									<div class="well well-sm">{{ ad.categoryName }}</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-2">
-									<div><strong>Email</strong></div>
+									<div><strong>Town</strong></div>
 								</div>
 								<div class="col-md-10">
-									<div class="well well-sm"><a href="mailto:{{ ad.ownerEmail }}">{{ ad.ownerEmail }}</a></div>
+									<div class="well well-sm">{{ ad.townName }}</div>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-md-2">
-									<div><strong>Phone</strong></div>
-								</div>
-								<div class="col-md-10">
-									<div class="well well-sm"><a href="tel:{{ ad.ownerPhone }}">{{ ad.ownerPhone }}</a></div>
-								</div>
-							</div><!--
-							<div class="col-md-2">
-								<div><strong>Name</strong></div>
-								<div><strong>Email</strong></div>
-								<div><strong>Phone</strong></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="row">
+							<div class="col-md-3">
+								<div><strong>Status</strong></div>
 							</div>
-							<div class="col-md-10">
-								<div class="well well-sm">{{ ad.ownerName }}</div>
-								<div class="well well-sm"><a href="mailto:{{ ad.ownerEmail }}">{{ ad.ownerEmail }}</a></div>
-								<div class="well well-sm"><a href="tel:{{ ad.ownerPhone }}">{{ ad.ownerPhone }}</a></div>
-							</div>-->
+							<div class="col-md-9">
+								<div class="well well-sm">{{ ad.status }}</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-8" ng-if="ad.status == 'WaitingApproval' || ad.status == 'Published'">
+						<a href class="btn btn-default btn-block">Deactivate</a>
+					</div>
+					<div class="col-md-8" ng-if="ad.status == 'Inactive' || ad.status == 'Rejected'">
+						<div class="btn-group btn-group-justified">
+							<a href class="btn btn-primary">Edit</a>
+							<a href class="btn btn-success">Publish Again</a>
+							<a href class="btn btn-danger">Delete</a>
 						</div>
 					</div>
 				</div>

@@ -17,12 +17,16 @@ adsApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
 			controller: 'RegisterController'
 		})
 		.when('/user/ads', {
-			templateUrl: 'templates/user/home.html',
-			controller: 'HomeController'
+			templateUrl: 'templates/user/user-ads.html',
+			controller: 'UserAdsController'
 		})
 		.when('/user/ads/publish', {
 			templateUrl: 'templates/user/publish-new-ad.html',
 			controller: 'UserPublishNewAdController'
+		})
+		.when('/user/profile/edit', {
+			templateUrl: 'templates/user/home.html',
+			controller: 'HomeController'
 		})
 		.otherwise({
 			redirectTo: '/'
