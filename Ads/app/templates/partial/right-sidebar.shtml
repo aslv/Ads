@@ -8,6 +8,9 @@
 				<li><a href class="btn btn-link btn-block" ng-class="{'active': selectedCategoryId == null}" ng-click="categoryClicked(null)"><em>All</em></a></li>
 				<li ng-repeat="category in categories"><a href class="btn btn-link btn-block" ng-class="{'active': selectedCategoryId == category.id}" ng-click="categoryClicked(category.id)">{{ category.name }}</a></li>
 			</ul>
+			<div ng-show="categoriesLoading">
+				<img src="images/loader.gif" />
+			</div>
 		</div>
 	</div>
 	<div class="panel panel-primary">
@@ -19,6 +22,9 @@
 				<li><a href class="btn btn-link btn-block" ng-class="{'active': selectedTownId == null}" ng-click="townClicked(null)"><em>All</em></a></li>
 				<li ng-repeat="town in towns"><a href class="btn btn-link btn-block" ng-class="{'active': selectedTownId == town.id}" ng-click="townClicked(town.id)">{{ town.name }}</a></li>
 			</ul>
+			<div ng-show="townsLoading">
+				<img src="images/loader.gif" />
+			</div>
 		</div>
 	</div>
 </div>
