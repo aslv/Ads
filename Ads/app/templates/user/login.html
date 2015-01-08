@@ -4,7 +4,7 @@
 	    <legend>Login</legend>
 	    <div class="form-group">
 	      <label for="inputUsername" class="col-lg-2 control-label">Username</label>
-	      <div class="col-lg-10">
+	      <div class="col-lg-10" ng-class="{'has-error': !userData.username}">
 	        <input type="text" required class="form-control" id="inputUsername" placeholder="Username" ng-model="userData.username" />
 	      </div>
 	    </div>
@@ -17,7 +17,7 @@
 	    <div class="form-group">
 	      <div class="col-lg-10 col-lg-offset-2">
 	        <a href="#/register" class="btn btn-default">Register</a>
-	        <button class="btn btn-primary" ng-click="login(userData)">Login</button>
+	        <button class="btn btn-primary" ng-disabled="!userData.username || !userData.password" ng-click="login(userData)">Login</button>
 	      </div>
 	    </div>
 	  </fieldset>
