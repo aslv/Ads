@@ -23,8 +23,31 @@ adsApp.controller('UserEditAdController', ['$scope', '$location', '$routeParams'
 				notify.error('An error occured while loading categories.', error);
 			}
 		);
+	
+	// setting inputs
+	loadCurrentAd($scope.adId);
+
 	$scope.editAd = function(adData) {
-		loadCurrentAd($scope.adId);
+		if ($scope.imageChanged) {
+			$scope.adData.changeImage = true;
+			if ($scope.imageDeleted) {
+				delete $scope.adData.imageDataUrl;
+			}
+		}
+		else {
+			$scope.adData.changeImage = false;
+		}
+		user.editAd(
+			$scope.adId,
+			$scope.adData,
+			function success() {
+				notify.info('Ad successfully editted! Publish it!');
+				$location.path('/user/ads');
+			},
+			function error(error) {
+				notify.error('An error occured while editting ad.', error);
+			}
+		);
 	}
 	$scope.fileSelected = function (fileInput) {
 		delete $scope.adData.imageDataUrl;
@@ -46,16 +69,21 @@ adsApp.controller('UserEditAdController', ['$scope', '$location', '$routeParams'
 	}
 	$scope.changeImage = function () {
 		$scope.imageChanged = true;
+		$('#image-changed').text('Upload File');
+		$('#upload-image').html('<img src="images/no-img.png" />');
 	}
 	$scope.deleteImage = function () {
 		$scope.imageDeleted = true;
+		$scope.imageChanged = true;
+		$('#image-deleted').text('Image Deleted');
+		$('#upload-image').html('<img src="images/no-img.png" />');
 	}
 
 	function loadCurrentAd(id) {
 		user.getAdById(
 			id,
 			function success(data) {
-				console.log(data);
+				// console.log(data);
 				$scope.adData = data;
 			},
 			function error(error) {
