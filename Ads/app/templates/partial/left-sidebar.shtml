@@ -22,4 +22,12 @@
 			</div>
 		</div>
 	</div>
+	<div class="panel panel-primary" ng-show="user.isNormalUser() && location.path() == '/user/ads'">
+		<div class="panel-heading">
+			My Ads
+		</div>
+		<div class="panel-body">
+			<a href class="btn btn-link btn-block" ng-class="{'active': selectedCategoryId == category.id}" ng-click="categoryClicked(null)"><em>All</em></a>
+		</div>
+	</div>
 </div>
