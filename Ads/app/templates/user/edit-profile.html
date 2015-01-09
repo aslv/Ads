@@ -1,0 +1,48 @@
+<div class="row">
+	<div class="col-md-6">
+		<div class="well">
+			<form class="form-horizontal" name="editProfileForm" novalidate>
+				<fieldset>
+			    	<legend>Edit Profile</legend>
+			    	<div class="form-group" ng-class="{'has-error': editProfileForm.name.$invalid && editProfileForm.name.$dirty}">
+				    	<label for="inputName" class="control-label">Name</label>
+				    	<input type="text" required class="form-control" id="inputName" name="name" placeholder="Name" ng-model="userData.name">
+				    	<p ng-show="editProfileForm.name.$invalid && editProfileForm.name.$dirty" class="help-block">Name is required.</p>
+				    </div>
+				    <div class="form-group" ng-class="{'has-error': editProfileForm.email.$invalid && editProfileForm.email.$dirty}">
+					    <label for="inputEmail" class="control-label">Email</label>
+					    <input type="email" required class="form-control" id="inputEmail" name="email" placeholder="Email" ng-model="userData.email">
+					    <p ng-show="editProfileForm.email.$error.required && editProfileForm.email.$dirty" class="help-block">Email is required.</p>
+					    <p ng-show="editProfileForm.email.$error.email && editProfileForm.email.$dirty" class="help-block">Please enter a valid email.</p>
+				    </div>
+				    <div class="form-group">
+				    	<label for="inputPhone" class="control-label">Phone</label>
+				    	<input type="tel" class="form-control" id="inputPhone" name="phoneNumber" placeholder="Phone" ng-model="userData.phoneNumber">
+				    </div>
+				    <div class="form-group">
+					    <label for="inputTown" class="control-label">Town</label>
+					    <select class="form-control" id="inputTown" name="town" ng-model="userData.townId">
+					    	<option value="{{ nullVal }}"></option>
+					    	<option ng-repeat="town in towns" value="{{ town.id }}">{{ town.name }}</option>
+					    </select>
+				    </div>
+				    <div class="form-group">
+					    <div class="improve-margins">
+					    	<a href="#/user/ads" class="btn btn-default">Cancel</a>
+					    	<button class="btn btn-primary" ng-disabled="editProfileForm.$invalid" ng-click="editProfile(userData)">Update</button>
+					    </div>
+					</div>
+			    </fieldset>
+			</form>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="well">
+			<form class="form-horizontal" name="changePasswordForm" novalidate>
+				<fieldset>
+			    	<legend>Change Password</legend>
+			    </fieldset>
+			</form>
+		</div>
+	</div>
+</div>

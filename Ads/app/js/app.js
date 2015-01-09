@@ -1,6 +1,7 @@
 var adsApp = angular.module('adsApp', ['ngRoute', 'ngResource', 'ngStorage', 'ui.bootstrap.pagination']);
 
 adsApp.constant('baseUrl', 'http://softuni-ads.azurewebsites.net/api/');
+adsApp.constant('nullVal', null);
 
 adsApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 	$routeProvider
@@ -32,9 +33,12 @@ adsApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
 			templateUrl: 'templates/user/delete-ad.html',
 			controller: 'UserDeleteAdController'
 		})
+		.when('/user/profile', {
+			redirectTo: '/user/profile/edit'
+		})
 		.when('/user/profile/edit', {
-			templateUrl: 'templates/user/home.html',
-			controller: 'HomeController'
+			templateUrl: 'templates/user/edit-profile.html',
+			controller: 'UserEditProfileController'
 		})
 		.otherwise({
 			redirectTo: '/'

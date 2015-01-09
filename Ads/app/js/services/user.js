@@ -116,6 +116,23 @@ adsApp.factory('user', ['$http', '$sessionStorage', 'baseUrl', function ($http, 
                 headers: this.getAuthHeaders()
             };
             $http(request).success(success).error(error);
+        },
+        getUserProfile: function (success, error) {
+            var request = {
+                method: 'GET',
+                url: baseUrl + 'user/profile',
+                headers: this.getAuthHeaders()
+            };
+            $http(request).success(success).error(error);
+        },
+        editUserProfile: function (userData, success, error) {
+            var request = {
+                method: 'PUT',
+                url: baseUrl + 'user/profile',
+                headers: this.getAuthHeaders(),
+                data: userData
+            };
+            $http(request).success(success).error(error);
         }
 	};
 }]);
