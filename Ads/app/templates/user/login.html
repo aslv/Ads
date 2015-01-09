@@ -4,14 +4,14 @@
 	    <legend>Login</legend>
 	    <div class="form-group">
 	      <label for="inputUsername" class="col-lg-2 control-label">Username</label>
-	      <div class="col-lg-10" ng-class="{'has-error': !userData.username}">
-	        <input type="text" required class="form-control" id="inputUsername" placeholder="Username" ng-model="userData.username" />
+	      <div class="col-lg-10" ng-class="{'has-error': loginForm.username.$invalid && loginForm.username.$dirty}">
+	        <input type="text" required class="form-control" id="inputUsername" name="username" placeholder="Username" ng-model="userData.username" />
 	      </div>
 	    </div>
 	    <div class="form-group">
 	      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
 	      <div class="col-lg-10">
-	        <input type="password" required class="form-control" id="inputPassword" placeholder="Password" ng-model="userData.password" />
+	        <input type="password" required class="form-control" id="inputPassword" name="password" placeholder="Password" ng-model="userData.password" />
 	      </div>
 	    </div>
 	    <div class="form-group">
