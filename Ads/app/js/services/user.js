@@ -84,8 +84,13 @@ adsApp.factory('user', ['$http', '$sessionStorage', 'baseUrl', function ($http, 
             };
             $http(request).success(success).error(error);
         },
-        publishAdAgain: function () {
-            // TODO:
+        publishAdAgain: function (id, success, error) {
+            var request = {
+                method: 'PUT',
+                url: baseUrl + 'user/ads/publishagain/' + id,
+                headers: this.getAuthHeaders(),
+            };
+            $http(request).success(success).error(error);
         }
 	};
 }]);

@@ -14,12 +14,21 @@ adsApp.controller('UserAdsController', ['$scope', '$rootScope', '$route', 'user'
 				$route.reload();
 			},
 			function error(error) {
-				notify.error('An error occured deactivating ad.', error);
+				notify.error('An error occured while deactivating ad.', error);
 			}
 		);
 	}
 	$scope.publishAdAgain = function(id) {
-		
+		user.publishAdAgain(
+			id,
+			function success() {
+				notify.info('Ad published again!');
+				$route.reload();
+			},
+			function error(error) {
+				notify.error('An error occured while republishing ad.', error);
+			}
+		);
 	}
 	$scope.$on('categorySelected', function (_, selectedCategoryId) {
 		$scope.adsParams.categoryId = selectedCategoryId;
