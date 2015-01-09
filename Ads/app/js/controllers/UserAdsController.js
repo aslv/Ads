@@ -1,10 +1,25 @@
-adsApp.controller('UserAdsController', ['$scope', '$rootScope', 'user', 'notify', function ($scope, $rootScope, user, notify) {
+adsApp.controller('UserAdsController', ['$scope', '$rootScope', '$route', 'user', 'notify', function ($scope, $rootScope, $route, user, notify) {
 	$scope.adsParams = {
 		'startPage': 1,
 		'pageSize': 10
 	};
 	$scope.reloadAds = function () {
 		loadAds($scope.adsParams);
+	}
+	$scope.deactivateAd = function(id) {
+		user.deactivateAd(
+			id,
+			function success() {
+				notify.info('Ad deactivated!');
+				$route.reload();
+			},
+			function error(error) {
+				notify.error('An error occured deactivating ad.', error);
+			}
+		);
+	}
+	$scope.publishAdAgain = function(id) {
+		
 	}
 	$scope.$on('categorySelected', function (_, selectedCategoryId) {
 		$scope.adsParams.categoryId = selectedCategoryId;

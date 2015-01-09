@@ -76,8 +76,13 @@ adsApp.factory('user', ['$http', '$sessionStorage', 'baseUrl', function ($http, 
                 .then(success, error)
                 .finally(loaded);
         },
-        deactivateAd: function () {
-            // TODO:
+        deactivateAd: function (id, success, error) {
+            var request = {
+                method: 'PUT',
+                url: baseUrl + 'user/ads/deactivate/' + id,
+                headers: this.getAuthHeaders(),
+            };
+            $http(request).success(success).error(error);
         },
         publishAdAgain: function () {
             // TODO:
