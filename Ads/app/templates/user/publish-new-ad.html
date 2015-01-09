@@ -1,5 +1,5 @@
 <div class="well">
-	<form class="form-horizontal" name="userPublishAdForm">
+	<form class="form-horizontal" name="userPublishAdForm" novalidate>
 	  <fieldset>
 	    <legend>Publish New Ad</legend>
 
@@ -7,13 +7,15 @@
 	    <div class="row">
 	    	<div class="col-md-8">
 	    		<div class="improve-margins">
-		    		<div class="form-group">
+		    		<div class="form-group" ng-class="{'has-error': userPublishAdForm.title.$invalid && userPublishAdForm.title.$dirty}">
 				    	<label for="inputTitle" class="control-label">Title</label>
-				    	<input type="text" required class="form-control" id="inputTitle" placeholder="Ttile" ng-model="adData.title">
+				    	<input type="text" required class="form-control" id="inputTitle" name="title" placeholder="Ttile" ng-model="adData.title">
+				    	<p ng-show="userPublishAdForm.title.$invalid && userPublishAdForm.title.$dirty" class="help-block">Title is required.</p>
 				    </div>
-				    <div class="form-group">
+				    <div class="form-group" ng-class="{'has-error': userPublishAdForm.name.$invalid && userPublishAdForm.name.$dirty}">
 				    	<label for="inputText" class="control-label">Text</label>
-				    	<textarea required rows="4" class="form-control" id="inputName" placeholder="Text" ng-model="adData.text"></textarea>
+				    	<textarea required rows="4" class="form-control" id="inputName" name="name" placeholder="Text" ng-model="adData.text"></textarea>
+				    	<p ng-show="userPublishAdForm.name.$invalid && userPublishAdForm.name.$dirty" class="help-block">Text is required.</p>
 				    </div>
 			    </div>
 	    	</div>
@@ -29,16 +31,16 @@
 	    	</div>
 	    </div>
 
-		<div class="form-group">
+		<div class="form-group" >
 		    <label for="inputFile" class="col-lg-2 control-label">Image</label>
 		    <div class="col-lg-10">
-			    <input class="form-control" type="file" required id="inputFile" placeholder="Browse" onchange="angular.element(this).scope().fileSelected(this)" />
+			    <input class="form-control" type="file" id="inputFile" name="file" placeholder="Browse" onchange="angular.element(this).scope().fileSelected(this)" />
 	    	</div>
 	    </div>
     	<div class="form-group">
 		    <label for="inputCategory" class="col-lg-2 control-label">Category</label>
 		    <div class="col-lg-10">
-			    <select class="form-control" id="inputCategory" ng-model="adData.categoryId">
+			    <select class="form-control" id="inputCategory" name="category" ng-model="adData.categoryId">
 			    	<option value="null"></option>
 			    	<option ng-repeat="category in categories" value="{{ category.id }}">{{ category.name }}</option>
 			    </select>
@@ -47,7 +49,7 @@
 	    <div class="form-group">
 		    <label for="inputTown" class="col-lg-2 control-label">Town</label>
 		    <div class="col-lg-10">
-			    <select class="form-control" id="inputTown" ng-model="adData.townId">
+			    <select class="form-control" id="inputTown" name="town" ng-model="adData.townId">
 			    	<option value="null"></option>
 			    	<option ng-repeat="town in towns" value="{{ town.id }}">{{ town.name }}</option>
 			    </select>
@@ -57,7 +59,7 @@
 	    <div class="form-group">
 	      <div class="improve-margins">
 	        <a href="#/user/ads" class="btn btn-default">Cancel</a>
-	        <button class="btn btn-primary" ng-click="publish(adData)">Publish</button>
+	        <button class="btn btn-primary" ng-disabled="userPublishAdForm.$invalid" ng-click="publish(adData)">Publish</button>
 	      </div>
 	    </div>
 	  </fieldset>
