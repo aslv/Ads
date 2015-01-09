@@ -91,6 +91,31 @@ adsApp.factory('user', ['$http', '$sessionStorage', 'baseUrl', function ($http, 
                 headers: this.getAuthHeaders(),
             };
             $http(request).success(success).error(error);
+        },
+        getAdById: function (id, success, error) {
+             var request = {
+                method: 'GET',
+                url: baseUrl + 'user/ads/' + id,
+                headers: this.getAuthHeaders()
+            };
+            $http(request).success(success).error(error);
+        },
+        editAd: function (id, adData, success, error) {
+            var request = {
+                method: 'PUT',
+                url: baseUrl + 'user/ads/' + id,
+                headers: this.getAuthHeaders(),
+                data: adData
+            };
+            $http(request).success(success).error(error);
+        },
+        deleteAd: function (id, success, error) {
+            var request = {
+                method: 'DELETE',
+                url: baseUrl + 'user/ads/' + id,
+                headers: this.getAuthHeaders()
+            };
+            $http(request).success(success).error(error);
         }
 	};
 }]);

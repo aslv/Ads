@@ -24,6 +24,14 @@ adsApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
 			templateUrl: 'templates/user/publish-new-ad.html',
 			controller: 'UserPublishNewAdController'
 		})
+		.when('/user/ads/edit/:adId', {
+			templateUrl: 'templates/user/edit-ad.html',
+			controller: 'UserEditAdController'
+		})
+		.when('/user/ads/delete/:adId', {
+			templateUrl: 'templates/user/delete-ad.html',
+			controller: 'UserDeleteAdController'
+		})
 		.when('/user/profile/edit', {
 			templateUrl: 'templates/user/home.html',
 			controller: 'HomeController'

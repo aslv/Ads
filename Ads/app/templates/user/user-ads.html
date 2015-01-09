@@ -60,9 +60,9 @@
 					</div>
 					<div class="col-md-8" ng-if="ad.status == 'Inactive' || ad.status == 'Rejected'">
 						<div class="btn-group btn-group-justified">
-							<a href class="btn btn-primary">Edit</a>
+							<a href="#/user/ads/edit/{{ ad.id }}" class="btn btn-primary">Edit</a>
 							<a href class="btn btn-success" ng-click="publishAdAgain(ad.id)">Publish Again</a>
-							<a href class="btn btn-danger">Delete</a>
+							<a href="#/user/ads/delete/{{ ad.id }}" class="btn btn-danger">Delete</a>
 						</div>
 					</div>
 				</div>

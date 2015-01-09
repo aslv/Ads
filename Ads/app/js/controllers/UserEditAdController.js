@@ -1,5 +1,8 @@
-adsApp.controller('UserPublishNewAdController', ['$scope', '$location', 'user', 'categories', 'towns', 'notify', function($scope, $location, user, categories, towns, notify) {
-	$scope.adData = { townId: null, categoryId: null };
+adsApp.controller('UserEditAdController', ['$scope', '$location', '$routeParams', 'user', 'categories', 'towns', 'notify', function($scope, $location, $routeParams, user, categories, towns, notify) {
+	$scope.imageChanged = false;
+	$scope.imageDeleted = false;
+	$scope.adId = $routeParams.adId;
+
 	towns.getTowns()
 		.$promise
 		.then(
@@ -20,17 +23,8 @@ adsApp.controller('UserPublishNewAdController', ['$scope', '$location', 'user', 
 				notify.error('An error occured while loading categories.', error);
 			}
 		);
-	$scope.publish = function (adData) {
-		user.publishNewAd(
-			adData,
-			function success(data) {
-				notify.info('Ad successfully sent for administrator\'s approval.');
-				$location.path('/user/ads');
-			},
-			function error(error) {
-				notify.error('An error occured while sending ad for administrator\'s approval.', error);
-			}
-		);
+	$scope.editAd = function(adData) {
+		loadCurrentAd($scope.adId);
 	}
 	$scope.fileSelected = function (fileInput) {
 		delete $scope.adData.imageDataUrl;
@@ -49,5 +43,24 @@ adsApp.controller('UserPublishNewAdController', ['$scope', '$location', 'user', 
 	    } else {
 	        notify.error('Uploaded file type not supported.');
 	    }
+	}
+	$scope.changeImage = function () {
+		$scope.imageChanged = true;
+	}
+	$scope.deleteImage = function () {
+		$scope.imageDeleted = true;
+	}
+
+	function loadCurrentAd(id) {
+		user.getAdById(
+			id,
+			function success(data) {
+				console.log(data);
+				$scope.adData = data;
+			},
+			function error(error) {
+				notify.error('An error occured while loading ad.', error);
+			}
+		);
 	}
 }]);
