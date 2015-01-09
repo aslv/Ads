@@ -1,27 +1,31 @@
 <div class="well">
-	<form class="form-horizontal" name="registerForm">
+	<form class="form-horizontal" name="registerForm" novalidate>
 	  <fieldset>
 	    <legend>Register</legend>
 	    <div class="improve-margins">
-		    <div class="form-group">
+		    <div class="form-group" ng-class="{'has-error': registerForm.username.$invalid && registerForm.username.$dirty}">
 		    	<label for="inputUsername" class="control-label">Username</label>
-		    	<input type="text" required class="form-control" id="inputUsername" placeholder="Username" ng-model="user.username">
+		    	<input type="text" required class="form-control" id="inputUsername" name="username" placeholder="Username" ng-model="user.username">
+		    	<p ng-show="loginForm.username.$invalid && loginForm.username.$dirty" class="help-block">Username is required.</p>
 		    </div>
 	    </div>
 	    <div class="row">
 	    	<div class="col-md-6">
 	    		<div class="improve-margins">
-		    		<div class="form-group">
+		    		<div class="form-group" ng-class="{'has-error': registerForm.password.$invalid && registerForm.password.$dirty}">
 				    	<label for="inputPassword" class="control-label">Password</label>
-				    	<input type="password" required class="form-control" id="inputPassword" placeholder="Password" ng-model="user.password">
+				    	<input type="password" required class="form-control" id="inputPassword" name="password" placeholder="Password" ng-model="user.password" ng-minlength="2" ng-maxlength="100">
+				    	<p ng-show="loginForm.username.$error.minlength" class="help-block">Password must at least 2 characters.</p>
+				    	<p ng-show="loginForm.username.$error.maxlength" class="help-block">Password must at most 100 characters.</p>
 				    </div>
-				    <div class="form-group">
+				    <div class="form-group" ng-class="{'has-error': registerForm.name.$invalid && registerForm.name.$dirty}">
 				    	<label for="inputName" class="control-label">Name</label>
-				    	<input type="text" required class="form-control" id="inputName" placeholder="Name" ng-model="user.name">
+				    	<input type="text" required class="form-control" id="inputName" name="name" placeholder="Name" ng-model="user.name">
+				    	<p ng-show="loginForm.name.$invalid && loginForm.name.$dirty" class="help-block">Name is required.</p>
 				    </div>
 				    <div class="form-group">
 				    	<label for="inputPhone" class="control-label">Phone</label>
-				    	<input type="tel" required class="form-control" id="inputPhone" placeholder="Phone" ng-model="user.phone">
+				    	<input type="tel" class="form-control" id="inputPhone" name="phone" placeholder="Phone" ng-model="user.phone">
 				    </div>
 			    </div>
 	    	</div>
@@ -29,15 +33,15 @@
 	    		<div class="improve-margins">
 		    		<div class="form-group">
 					    <label for="inputPassword" class="control-label">Confirm Password</label>
-					    <input type="password" required class="form-control" id="inputConfirmPassword" placeholder="Confirm Password" ng-model="user.confirmPassword">
+					    <input type="password" required class="form-control" id="inputConfirmPassword" name="confirmPassword" placeholder="Confirm Password" ng-model="user.confirmPassword">
 				    </div>
-				    <div class="form-group">
+				    <div class="form-group" ng-class="{'has-error': registerForm.email.$invalid && registerForm.email.$dirty}">
 					    <label for="inputEmail" class="control-label">Email</label>
-					    <input type="email" required class="form-control" id="inputEmail" placeholder="Email" ng-model="user.email">
+					    <input type="email" required class="form-control" id="inputEmail" name="email" placeholder="Email" ng-model="user.email">
 				    </div>
 				    <div class="form-group">
 					    <label for="inputTown" class="control-label">Town</label>
-					    <select class="form-control" id="inputTown" ng-model="user.townId">
+					    <select class="form-control" id="inputTown" name="town" ng-model="user.townId">
 					    	<option value="null"></option>
 					    	<option ng-repeat="town in towns" value="{{ town.id }}">{{ town.name }}</option>
 					    </select>
@@ -48,7 +52,7 @@
 	    <div class="form-group">
 	      <div class="improve-margins">
 	        <a href="#/login" class="btn btn-default">Login</a>
-	        <button class="btn btn-primary" ng-click="register(user)">Register</button>
+	        <button class="btn btn-primary" ng-disabled="registerForm.$invalid" ng-click="register(user)">Register</button>
 	      </div>
 	    </div>
 	  </fieldset>
