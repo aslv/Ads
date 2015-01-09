@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<header class="row">
+			<h1 class="col-md-10">{{ adData.title }}</h1>
+			<span class="col-md-2">{{ adData.date | date:'d-MMM-yyyy' }}</span>
+		</header>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="well well-sm image-holder">
+					<img src="images/no-img.png" ng-src="{{ adData.imageDataUrl }}" alt="{{ adData.title }}" />
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="well">
+					{{ adData.text }}
+				</div>
+				<div class="row">
+					<div class="row">
+						<div class="col-md-2">
+							<div><strong>Category</strong></div>
+						</div>
+						<div class="col-md-10">
+							<div class="well well-sm">{{ adData.categoryName }}</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2">
+							<div><strong>Town</strong></div>
+						</div>
+						<div class="col-md-10">
+							<div class="well well-sm">{{ adData.townName }}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="panel-footer">
+		<div class="improve-margins">
+	        <a href="#/user/ads" class="btn btn-default">Cancel</a>
+	        <button class="btn btn-primary" ng-click="deleteAd()">Delete</button>
+    	</div>
+	</div>
+</div>
+
+
