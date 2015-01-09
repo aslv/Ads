@@ -6,7 +6,7 @@
 		    <div class="form-group" ng-class="{'has-error': registerForm.username.$invalid && registerForm.username.$dirty}">
 		    	<label for="inputUsername" class="control-label">Username</label>
 		    	<input type="text" required class="form-control" id="inputUsername" name="username" placeholder="Username" ng-model="user.username">
-		    	<p ng-show="loginForm.username.$invalid && loginForm.username.$dirty" class="help-block">Username is required.</p>
+		    	<p ng-show="registerForm.username.$invalid && registerForm.username.$dirty" class="help-block">Username is required.</p>
 		    </div>
 	    </div>
 	    <div class="row">
@@ -15,13 +15,14 @@
 		    		<div class="form-group" ng-class="{'has-error': registerForm.password.$invalid && registerForm.password.$dirty}">
 				    	<label for="inputPassword" class="control-label">Password</label>
 				    	<input type="password" required class="form-control" id="inputPassword" name="password" placeholder="Password" ng-model="user.password" ng-minlength="2" ng-maxlength="100">
-				    	<p ng-show="loginForm.username.$error.minlength" class="help-block">Password must at least 2 characters.</p>
-				    	<p ng-show="loginForm.username.$error.maxlength" class="help-block">Password must at most 100 characters.</p>
+				    	<p ng-show="registerForm.password.$error.required && registerForm.password.$dirty" class="help-block">Password is required.</p>
+				    	<p ng-show="registerForm.password.$error.minlength" class="help-block">Password must be at least 2 characters.</p>
+				    	<p ng-show="registerForm.password.$error.maxlength" class="help-block">Password must be at most 100 characters.</p>
 				    </div>
 				    <div class="form-group" ng-class="{'has-error': registerForm.name.$invalid && registerForm.name.$dirty}">
 				    	<label for="inputName" class="control-label">Name</label>
 				    	<input type="text" required class="form-control" id="inputName" name="name" placeholder="Name" ng-model="user.name">
-				    	<p ng-show="loginForm.name.$invalid && loginForm.name.$dirty" class="help-block">Name is required.</p>
+				    	<p ng-show="registerForm.name.$invalid && registerForm.name.$dirty" class="help-block">Name is required.</p>
 				    </div>
 				    <div class="form-group">
 				    	<label for="inputPhone" class="control-label">Phone</label>
@@ -31,13 +32,16 @@
 	    	</div>
 	    	<div class="col-md-6">
 	    		<div class="improve-margins">
-		    		<div class="form-group">
+		    		<div class="form-group" ng-class="{'has-error': (user.confirmPassword != user.password) && registerForm.confirmPassword.$dirty}">
 					    <label for="inputPassword" class="control-label">Confirm Password</label>
 					    <input type="password" required class="form-control" id="inputConfirmPassword" name="confirmPassword" placeholder="Confirm Password" ng-model="user.confirmPassword">
+					    <p ng-show="(user.confirmPassword != user.password) && registerForm.confirmPassword.$dirty" class="help-block">Confirm password is not the same as password.</p>
 				    </div>
 				    <div class="form-group" ng-class="{'has-error': registerForm.email.$invalid && registerForm.email.$dirty}">
 					    <label for="inputEmail" class="control-label">Email</label>
 					    <input type="email" required class="form-control" id="inputEmail" name="email" placeholder="Email" ng-model="user.email">
+					    <p ng-show="registerForm.email.$error.required && registerForm.email.$dirty" class="help-block">Email is required.</p>
+					    <p ng-show="registerForm.email.$error.email && registerForm.email.$dirty" class="help-block">Please enter a valid email.</p>
 				    </div>
 				    <div class="form-group">
 					    <label for="inputTown" class="control-label">Town</label>
