@@ -16,6 +16,11 @@ adsApp.controller('UserAdsController', ['$scope', '$rootScope', 'user', 'notify'
 		$scope.adsParams.startPage = 1;
 		$scope.reloadAds();
 	});
+	$scope.$on('statusSelected', function (_, selectedStatus) {
+		$scope.adsParams.status = selectedStatus;
+		$scope.adsParams.startPage = 1;
+		$scope.reloadAds();
+	});
 	
 	$scope.reloadAds();
 	
