@@ -6,29 +6,29 @@ adsApp.controller('AdminAdsController', ['$scope', '$rootScope', '$route', 'admi
 	$scope.reloadAds = function () {
 		loadAds($scope.adsParams);
 	}
-	$scope.approveAd = function(id) {/*
-		user.deactivateAd(
+	$scope.approveAd = function(id) {
+		admin.approveAd(
 			id,
 			function success() {
-				notify.info('Ad deactivated!');
+				notify.info('Ad approved!');
 				$route.reload();
 			},
 			function error(error) {
-				notify.error('An error occured while deactivating ad.', error);
+				notify.error('An error occured while approving ad.', error);
 			}
-		);*/
+		);
 	}
-	$scope.rejectAd = function(id) {/*
-		user.publishAdAgain(
+	$scope.rejectAd = function(id) {
+		admin.rejectAd(
 			id,
 			function success() {
-				notify.info('Ad published again!');
+				notify.info('Ad rejected!');
 				$route.reload();
 			},
 			function error(error) {
-				notify.error('An error occured while republishing ad.', error);
+				notify.error('An error occured while rejecting ad.', error);
 			}
-		);*/
+		);
 	}
 	$scope.$on('categorySelected', function (_, selectedCategoryId) {
 		$scope.adsParams.categoryId = selectedCategoryId;
@@ -53,7 +53,7 @@ adsApp.controller('AdminAdsController', ['$scope', '$rootScope', '$route', 'admi
 		admin.getAds(
 			params,
 			function success(data) {
-				console.log(data.data);
+				// console.log(data.data);
 				$scope.ads = data.data;
 			},
 			function error(error) {

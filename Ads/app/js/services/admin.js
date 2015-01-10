@@ -10,6 +10,22 @@ adsApp.factory('admin', ['$http', '$sessionStorage', 'user', 'baseUrl', function
             $http(request)
                 .then(success, error)
                 .finally(loaded);
+		},
+		approveAd: function (id, success, error) {
+			var request = {
+                method: 'PUT',
+                url: baseUrl + 'admin/ads/approve/' + id,
+                headers: user.getAuthHeaders(),
+            };
+            $http(request).success(success).error(error);
+		},
+		rejectAd: function (id, success, error) {
+			var request = {
+                method: 'PUT',
+                url: baseUrl + 'admin/ads/reject/' + id,
+                headers: user.getAuthHeaders(),
+            };
+            $http(request).success(success).error(error);
 		}
 	};
 }]);

@@ -16,12 +16,46 @@
 						<div class="well well-sm image-holder">
 							<img src="images/no-img.png" ng-src="{{ ad.imageDataUrl }}" alt="{{ ad.title }}" />
 						</div>
+						<div><strong>Status</strong></div>
+						<div class="well well-sm">{{ ad.status }}</div>
 					</div>
 					<div class="col-md-8">
 						<div class="well">
 							{{ ad.text }}
 						</div>
-						<div class="row">
+						<div>
+							<div class="row">
+								<div class="col-md-2">
+									<div><strong>Username</strong></div>
+								</div>
+								<div class="col-md-10">
+									<div class="well well-sm">{{ ad.ownerUsername }}</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-2">
+									<div><strong>Name</strong></div>
+								</div>
+								<div class="col-md-10">
+									<div class="well well-sm">{{ ad.ownerName }}</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-2">
+									<div><strong>Email</strong></div>
+								</div>
+								<div class="col-md-10">
+									<div class="well well-sm"><a href="mailto:{{ ad.ownerEmail }}">{{ ad.ownerEmail }}</a></div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-2">
+									<div><strong>Phone</strong></div>
+								</div>
+								<div class="col-md-10">
+									<div class="well well-sm"><a href="tel:{{ ad.ownerPhone }}">{{ ad.ownerPhone }}</a></div>
+								</div>
+							</div>
 							<div class="row">
 								<div class="col-md-2">
 									<div><strong>Category</strong></div>
@@ -37,14 +71,6 @@
 								<div class="col-md-10">
 									<div class="well well-sm">{{ ad.townName }}</div>
 								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-3">
-								<div><strong>Status</strong></div>
-							</div>
-							<div class="col-md-9">
-								<div class="well well-sm">{{ ad.status }}</div>
 							</div>
 						</div>
 					</div>
