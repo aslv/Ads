@@ -4,6 +4,9 @@
 			<h1 class="col-md-10">{{ adData.title }}</h1>
 			<span class="col-md-2">{{ adData.date | date:'d-MMM-yyyy' }}</span>
 		</header>
+		<div class="well">
+			{{ adData.text }}
+		</div>
 		<div class="row">
 			<div class="col-md-4">
 				<div class="well well-sm image-holder">
@@ -11,9 +14,6 @@
 				</div>
 			</div>
 			<div class="col-md-8">
-				<div class="well">
-					{{ adData.text }}
-				</div>
 				<div class="row">
 					<div class="row">
 						<div class="col-md-2">
@@ -29,6 +29,38 @@
 						</div>
 						<div class="col-md-10">
 							<div class="well well-sm">{{ adData.townName }}</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2">
+							<div><strong>Username</strong></div>
+						</div>
+						<div class="col-md-10">
+							<div class="well well-sm">{{ adData.ownerUsername }}</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2">
+							<div><strong>Name</strong></div>
+						</div>
+						<div class="col-md-10">
+							<div class="well well-sm">{{ adData.ownerName }}</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2">
+							<div><strong>Email</strong></div>
+						</div>
+						<div class="col-md-10">
+							<div class="well well-sm"><a href="mailto:{{ adData.ownerEmail }}">{{ adData.ownerEmail }}</a></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2">
+							<div><strong>Phone</strong></div>
+						</div>
+						<div class="col-md-10">
+							<div class="well well-sm"><a href="tel:{{ adData.ownerPhone }}">{{ adData.ownerPhone }}</a></div>
 						</div>
 					</div>
 				</div>
