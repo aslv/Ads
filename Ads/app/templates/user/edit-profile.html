@@ -58,7 +58,7 @@
 				    <div class="form-group" ng-class="{'has-error': (userData.confirmPassword != userData.newPassword) && changePasswordForm.confirmPassword.$dirty}">
 					    <label for="inputPassword" class="control-label">Confirm Password</label>
 					    <input type="password" required class="form-control" id="inputConfirmPassword" name="confirmPassword" placeholder="Confirm Password" ng-model="userData.confirmPassword">
-					    <p ng-show="(userData.confirmPassword != userData.newPassword) && changePasswordForm.confirmPassword.$dirty" class="help-block">Confirm password is not the same as password.</p>
+					    <p ng-show="(userData.confirmPassword != userData.newPassword) && changePasswordForm.confirmPassword.$dirty" class="help-block">Confirm password is not the same as new password.</p>
 				    </div>
 				    <div class="form-group">
 					    <div class="improve-margins">

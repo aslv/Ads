@@ -5,10 +5,15 @@
 		</div>
 		<div class="panel-body">
 	  		<a href="#/" class="btn btn-link btn-block">Home</a>
+
 	  		<a href="#/user/ads" class="btn btn-link btn-block" ng-show="user.isNormalUser()">My Ads</a>
 	  		<a href="#/user/ads/publish" class="btn btn-link btn-block" ng-show="user.isNormalUser()">Publish New Ad</a>
 	  		<a href="#/user/profile/edit" class="btn btn-link btn-block" ng-show="user.isNormalUser()">Edit Profile</a>
-	  		<!-- TODO: Admin panel -->
+
+	  		<a href="#/admin/ads" class="btn btn-link btn-block" ng-show="user.isAdmin()">Ads</a>
+	  		<a href="#/admin/users" class="btn btn-link btn-block" ng-show="user.isAdmin()">Users</a>
+	  		<a href="#/admin/categories" class="btn btn-link btn-block" ng-show="user.isAdmin()">Categories</a>
+	  		<a href="#/admin/towns" class="btn btn-link btn-block" ng-show="user.isAdmin()">Towns</a>
 		</div>
 	</div>
 	<div class="panel panel-default" ng-show="user.isAnonymous()">
@@ -22,16 +27,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="panel panel-primary" ng-show="user.isNormalUser() && location.path() == '/user/ads'" ng-controller="UserAdsStatusFilterController">
+	<div class="panel panel-primary" ng-show="(user.isNormalUser() && location.path() == '/user/ads') || (user.isAdmin() && location.path() == '/admin/ads')" ng-controller="AdsStatusFilterController">
 		<div class="panel-heading">
-			My Ads
+			<span ng-show="user.isNormalUser() && location.path() == '/user/ads'">My </span>
+			Ads
 		</div>
-		<div class="panel-body">
-			<a href class="btn btn-link btn-block" ng-class="{'active': selectedStatus == null}" ng-click="statusClicked(null)"><em>All</em></a>
-			<a href class="btn btn-link btn-block" ng-class="{'active': selectedStatus == 'Inactive'}" ng-click="statusClicked('Inactive')">Inactive</a>
-			<a href class="btn btn-link btn-block" ng-class="{'active': selectedStatus == 'WaitingApproval'}" ng-click="statusClicked('WaitingApproval')">Waiting Approval</a>
-			<a href class="btn btn-link btn-block" ng-class="{'active': selectedStatus == 'Published'}" ng-click="statusClicked('Published')">Published</a>
-			<a href class="btn btn-link btn-block" ng-class="{'active': selectedStatus == 'Rejected'}" ng-click="statusClicked('Rejected')">Rejected</a>
-		</div>
+		<div status-filter></div>
 	</div>
 </div>

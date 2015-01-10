@@ -1,0 +1,7 @@
+<div class="panel-body">
+	<a href class="btn btn-link btn-block" ng-class="{'active': selectedStatus == null}" ng-click="statusClicked(null)"><em>All</em></a>
+	<a href class="btn btn-link btn-block" ng-class="{'active': selectedStatus == 'Inactive'}" ng-click="statusClicked('Inactive')">Inactive</a>
+	<a href class="btn btn-link btn-block" ng-class="{'active': selectedStatus == 'WaitingApproval'}" ng-click="statusClicked('WaitingApproval')">Waiting Approval</a>
+	<a href class="btn btn-link btn-block" ng-class="{'active': selectedStatus == 'Published'}" ng-click="statusClicked('Published')">Published</a>
+	<a href class="btn btn-link btn-block" ng-class="{'active': selectedStatus == 'Rejected'}" ng-click="statusClicked('Rejected')">Rejected</a>
+</div>
