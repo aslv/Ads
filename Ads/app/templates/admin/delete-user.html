@@ -1,0 +1,54 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div>
+			<div class="row">
+				<div class="col-md-2">
+					<div><strong>Username</strong></div>
+				</div>
+				<div class="col-md-10">
+					<div class="well well-sm">{{ userData.username }}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<div><strong>Name</strong></div>
+				</div>
+				<div class="col-md-10">
+					<div class="well well-sm">{{ userData.name }}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<div><strong>Town</strong></div>
+				</div>
+				<div class="col-md-10">
+					<div class="well well-sm">{{ userData.townName }}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<div><strong>Email</strong></div>
+				</div>
+				<div class="col-md-10">
+					<div class="well well-sm"><a href="mailto:{{ userData.email }}">{{ userData.erEmail }}</a></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<div><strong>Phone</strong></div>
+				</div>
+				<div class="col-md-10">
+					<div class="well well-sm"><a href="tel:{{ userData.phoneNumber }}">{{ userData.phoneNumber }}</a></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="panel-footer">
+		<div class="improve-margins">
+	        <a href="#/admin/user" class="btn btn-default">Cancel</a>
+	        <button class="btn btn-primary" ng-click="deleteUser(userData)">Delete</button>
+    	</div>
+	</div>
+</div>
+
+

@@ -23,8 +23,8 @@ adsApp.controller('AdminUsersController', ['$scope', '$location', '$sessionStora
 		$location.path('/admin/users/edit/' + encodeURIComponent(userData.username));
 	}
 
-	$scope.edeleteUser = function (userData) {
-		$sessionStorage.usedToBeManipulated = userData;
+	$scope.deleteUser = function (userData) {
+		$sessionStorage.userToBeManipulated = userData;
 		$location.path('/admin/users/delete/' + encodeURIComponent(userData.username));
 	}
 	

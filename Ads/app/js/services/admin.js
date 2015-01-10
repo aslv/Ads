@@ -80,6 +80,14 @@ adsApp.factory('admin', ['$http', '$sessionStorage', 'user', 'baseUrl', function
                 data: userData
             };
             $http(request).success(success).error(error);
+        },
+        deleteUser: function (userName, success, error) {
+        	var request = {
+                method: 'DELETE',
+                url: baseUrl + 'admin/user/' + userName,
+                headers: user.getAuthHeaders()
+            };
+            $http(request).success(success).error(error);
         }
 	};
 }]);
