@@ -41,6 +41,31 @@
 			<form class="form-horizontal" name="changePasswordForm" novalidate>
 				<fieldset>
 			    	<legend>Change Password</legend>
+			    	<div class="form-group" ng-class="{'has-error': changePasswordForm.oldPassword.$invalid && changePasswordForm.oldPassword.$dirty}">
+				    	<label for="inputOldPassword" class="control-label">Old Password</label>
+				    	<input type="password" required class="form-control" id="inputOldPassword" name="oldPassword" placeholder="Old Password" ng-model="userData.oldPassword" ng-minlength="2" ng-maxlength="100">
+				    	<p ng-show="changePasswordForm.oldPassword.$error.required && changePasswordForm.oldPassword.$dirty" class="help-block">Password is required.</p>
+				    	<p ng-show="changePasswordForm.oldPassword.$error.minlength" class="help-block">Password must be at least 2 characters.</p>
+				    	<p ng-show="changePasswordForm.oldPassword.$error.maxlength" class="help-block">Password must be at most 100 characters.</p>
+				    </div>
+			    	<div class="form-group" ng-class="{'has-error': changePasswordForm.newPassword.$invalid && changePasswordForm.newPassword.$dirty}">
+				    	<label for="inputNewPassword" class="control-label">New Password</label>
+				    	<input type="password" required class="form-control" id="inputNewPassword" name="newPassword" placeholder="New Password" ng-model="userData.newPassword" ng-minlength="2" ng-maxlength="100">
+				    	<p ng-show="changePasswordForm.newPassword.$error.required && changePasswordForm.newPassword.$dirty" class="help-block">Password is required.</p>
+				    	<p ng-show="changePasswordForm.newPassword.$error.minlength" class="help-block">Password must be at least 2 characters.</p>
+				    	<p ng-show="changePasswordForm.newPassword.$error.maxlength" class="help-block">Password must be at most 100 characters.</p>
+				    </div>
+				    <div class="form-group" ng-class="{'has-error': (userData.confirmPassword != userData.newPassword) && changePasswordForm.confirmPassword.$dirty}">
+					    <label for="inputPassword" class="control-label">Confirm Password</label>
+					    <input type="password" required class="form-control" id="inputConfirmPassword" name="confirmPassword" placeholder="Confirm Password" ng-model="userData.confirmPassword">
+					    <p ng-show="(userData.confirmPassword != userData.newPassword) && changePasswordForm.confirmPassword.$dirty" class="help-block">Confirm password is not the same as password.</p>
+				    </div>
+				    <div class="form-group">
+					    <div class="improve-margins">
+					    	<a href="#/user/ads" class="btn btn-default">Cancel</a>
+					    	<button class="btn btn-primary" ng-disabled="changePasswordForm.$invalid" ng-click="changePassword(userData)">Change Password</button>
+					    </div>
+					</div>
 			    </fieldset>
 			</form>
 		</div>

@@ -1,4 +1,4 @@
-adsApp.controller('UserEditProfileController', ['$scope', '$route', 'user', 'towns', 'notify', 'nullVal', function($scope, $route, user, towns, notify) {
+adsApp.controller('UserEditProfileController', ['$scope', '$route', 'user', 'towns', 'notify', 'nullVal', function($scope, $route, user, towns, notify, nullVal) {
 	towns.getTowns()
 		.$promise
 		.then(
@@ -31,6 +31,19 @@ adsApp.controller('UserEditProfileController', ['$scope', '$route', 'user', 'tow
 			},
 			function error(error) {
 				notify.error('An error occured while editting your profile.', error);
+			}
+		);
+	}
+
+	$scope.changePassword = function (userData) {
+		user.changeUserPassword(
+			userData,
+			function success() {
+				notify.info('Your password successfully changed!');
+				$route.reload();
+			},
+			function error(error) {
+				notify.error('An error occured while changing your password.', error);
 			}
 		);
 	}

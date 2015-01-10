@@ -133,6 +133,15 @@ adsApp.factory('user', ['$http', '$sessionStorage', 'baseUrl', function ($http, 
                 data: userData
             };
             $http(request).success(success).error(error);
+        },
+        changeUserPassword: function(userData, success, error) {
+            var request = {
+                method: 'PUT',
+                url: baseUrl + 'user/changepassword',
+                headers: this.getAuthHeaders(),
+                data: userData
+            };
+            $http(request).success(success).error(error);
         }
 	};
 }]);
