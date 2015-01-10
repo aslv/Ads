@@ -35,21 +35,40 @@
 					    </div>
 				    </div>
 				    <div class="form-group">
+					    <label for="inputCategory" class="col-lg-2 control-label">Category</label>
+					    <div class="col-lg-10">
+						    <select class="form-control" id="inputCategory" name="category" ng-model="adData.categoryId">
+						    	<option value="{{ nullVal }}"></option>
+						    	<option ng-repeat="category in categories" value="{{ category.id }}">{{ category.name }}</option>
+						    </select>
+					    </div>
+				    </div>
+				    <div class="form-group">
+					    <label for="inputTown" class="col-lg-2 control-label">Town</label>
+					    <div class="col-lg-10">
+						    <select class="form-control" id="inputTown" name="town" ng-model="adData.townId">
+						    	<option value="{{ nullVal }}"></option>
+						    	<option ng-repeat="town in towns" value="{{ town.id }}">{{ town.name }}</option>
+						    </select>
+					    </div>
+				    </div>
+				    <div class="form-group" ng-class="{'has-error': adminEditAdForm.status.$invalid && adminEditAdForm.status.$dirty}">
 					    <label for="inputStatus" class="col-lg-2 control-label">Status</label>
 					    <div class="col-lg-10">
-						    <select class="form-control" id="inputStatus" name="status" ng-model="adData.status">
-						    	<option value="{{ nullVal }}"></option>
+						    <select class="form-control" id="inputStatus" required name="status" ng-model="adData.status">
 						    	<option value="Inactive">Inactive</option>
 						    	<option value="WaitingApproval">Waiting Approval</option>
 						    	<option value="Published">Published</option>
 						    	<option value="Rejected">Rejected</option>
 						    </select>
+						    <p ng-show="adminEditAdForm.status.$invalid && adminEditAdForm.status.$dirty" class="help-block">Status is required.</p>
 					    </div>
 				    </div>
-				    <div class="form-group">
+				    <div class="form-group" ng-class="{'has-error': adminEditAdForm.date.$invalid && adminEditAdForm.date.$dirty}">
 				    	<label for="inputDate" class="col-lg-2 control-label">Date</label>
 				    	<div class="col-lg-10">
-					    	<input type="date" class="form-control" id="inputDate" name="date" placeholder="Date" ng-model="adDate">
+					    	<input type="date" class="form-control" id="inputDate" required name="date" placeholder="Date" ng-model="adDate">
+					    	<p ng-show="adminEditAdForm.date.$invalid && adminEditAdForm.date.$dirty" class="help-block">Date is required.</p>
 					    </div>
 				    </div>
 			    <!--</div>-->
@@ -69,30 +88,12 @@
 						</div>
 					</div>
 			    </div>
-			    <div class="form-group">
-				    <label for="inputCategory" class="col-lg-2 control-label">Category</label>
-				    <div class="col-lg-10">
-					    <select class="form-control" id="inputCategory" name="category" ng-model="adData.categoryId">
-					    	<option value="{{ nullVal }}"></option>
-					    	<option ng-repeat="category in categories" value="{{ category.id }}">{{ category.name }}</option>
-					    </select>
-				    </div>
-			    </div>
-			    <div class="form-group">
-				    <label for="inputTown" class="col-lg-2 control-label">Town</label>
-				    <div class="col-lg-10">
-					    <select class="form-control" id="inputTown" name="town" ng-model="adData.townId">
-					    	<option value="{{ nullVal }}"></option>
-					    	<option ng-repeat="town in towns" value="{{ town.id }}">{{ town.name }}</option>
-					    </select>
-				    </div>
-			    </div>
 	    	</div>
 	    </div>
 
 	    <div class="form-group">
 	      <div class="improve-margins">
-	        <a href="#/user/ads" class="btn btn-default">Cancel</a>
+	        <a href="#/admin/ads" class="btn btn-default">Cancel</a>
 	        <button class="btn btn-primary" ng-disabled="adminEditAdForm.$invalid" ng-click="editAd(adData)">Edit</button>
 	      </div>
 	    </div>
