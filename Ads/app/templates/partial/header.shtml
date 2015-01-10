@@ -5,7 +5,17 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#/">Ads<span ng-show="user.isLoggedIn()"> - {{ user.getCurrentUser().username }}</span></a>
+    <a class="navbar-brand" href="#/">
+      Ads - 
+      <span ng-switch="location.path()">
+        <span ng-switch-when="/login">Login</span>
+        <span ng-switch-when="/register">Registration</span>
+        <span ng-switch-when="/user/ads">My Ads</span>
+        <span ng-switch-when="/user/ads/publish">Publish New Ad</span>
+        <span ng-switch-when="/user/profile/edit">Edit User Profile</span>
+        <span ng-switch-default>Home</span>
+      </span>
+    </a>
   </div>
   <div class="navbar-collapse collapse navbar-inverse-collapse">
     <ul class="nav navbar-nav">
