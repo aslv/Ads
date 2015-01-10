@@ -62,6 +62,24 @@ adsApp.factory('admin', ['$http', '$sessionStorage', 'user', 'baseUrl', function
             $http(request)
                 .then(success, error)
                 .finally(loaded);
-		}
+		},
+		editUserProfile: function (userName, userData, success, error) {
+            var request = {
+                method: 'PUT',
+                url: baseUrl + 'admin/user/' + userName,
+                headers: user.getAuthHeaders(),
+                data: userData
+            };
+            $http(request).success(success).error(error);
+        },
+        changeUserPassword: function(userData, success, error) {
+            var request = {
+                method: 'PUT',
+                url: baseUrl + 'admin/setpassword',
+                headers: user.getAuthHeaders(),
+                data: userData
+            };
+            $http(request).success(success).error(error);
+        }
 	};
 }]);

@@ -82,10 +82,14 @@ adsApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
 	*/
 }]);
 
-adsApp.run(['$rootScope', '$location', 'user', 'notify', function($rootScope, $location, user, notify) {
+adsApp.run(['$rootScope', '$location', 'admin', 'user', 'notify', function($rootScope, $location, admin, user, notify) {
 	$rootScope.$on('$locationChangeStart', function (_) {
 		if ($location.path().indexOf('/user/') != -1 && !user.isLoggedIn()) {
 			notify.warn('Only authorized users can access this resource!');
+			$location.path('/');
+		}
+		if ($location.path().indexOf('/admin/') != -1 && !user.isAdmin()) {
+			notify.warn('Only authorized administrators can access this resource!');
 			$location.path('/');
 		}
 	});
