@@ -1,4 +1,4 @@
-adsApp.controller('AdminEditAdController', ['$scope', '$location', '$routeParams', 'admin', 'categories', 'towns', 'notify', function($scope, $location, $routeParams, admin, categories, towns, notify) {
+adsApp.controller('AdminEditAdController', ['$scope', '$location', '$routeParams', 'admin', 'categories', 'towns', 'notify', 'nullVal', function($scope, $location, $routeParams, admin, categories, towns, notify, nullVal) {
 	$scope.imageChanged = false;
 	$scope.imageDeleted = false;
 	$scope.adId = $routeParams.adId;
@@ -37,6 +37,7 @@ adsApp.controller('AdminEditAdController', ['$scope', '$location', '$routeParams
 		else {
 			$scope.adData.changeImage = false;
 		}
+		$scope.adData.date = $scope.adDate.toISOString();
 		admin.editAd(
 			$scope.adId,
 			$scope.adData,
@@ -85,6 +86,7 @@ adsApp.controller('AdminEditAdController', ['$scope', '$location', '$routeParams
 			function success(data) {
 				// console.log(data);
 				$scope.adData = data;
+				$scope.adDate = new Date($scope.adData.date + 'Z');
 			},
 			function error(error) {
 				notify.error('An error occured while loading ad.', error);
