@@ -1,0 +1,79 @@
+<div class="row">
+	<div class="col-md-6">
+		<div class="well">
+			<form class="form-horizontal" name="adminEditUserForm" novalidate>
+				<fieldset>
+			    	<legend>Edit User Profile</legend>
+			    	<div class="form-group">
+				    	<label for="inputUsername" class="control-label">Username</label>
+				    	<input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username" ng-model="userData.username" disabled>
+				    </div>
+			    	<div class="form-group" ng-class="{'has-error': adminEditUserForm.name.$invalid && adminEditUserForm.name.$dirty}">
+				    	<label for="inputName" class="control-label">Name</label>
+				    	<input type="text" required class="form-control" id="inputName" name="name" placeholder="Name" ng-model="userData.name">
+				    	<p ng-show="adminEditUserForm.name.$invalid && adminEditUserForm.name.$dirty" class="help-block">Name is required.</p>
+				    </div>
+				    <div class="form-group" ng-class="{'has-error': adminEditUserForm.email.$invalid && adminEditUserForm.email.$dirty}">
+					    <label for="inputEmail" class="control-label">Email</label>
+					    <input type="email" required class="form-control" id="inputEmail" name="email" placeholder="Email" ng-model="userData.email">
+					    <p ng-show="adminEditUserForm.email.$error.required && adminEditUserForm.email.$dirty" class="help-block">Email is required.</p>
+					    <p ng-show="adminEditUserForm.email.$error.email && adminEditUserForm.email.$dirty" class="help-block">Please enter a valid email.</p>
+				    </div>
+				    <div class="form-group">
+				    	<label for="inputPhone" class="control-label">Phone</label>
+				    	<input type="tel" class="form-control" id="inputPhone" name="phoneNumber" placeholder="Phone" ng-model="userData.phoneNumber">
+				    </div>
+				    <div class="form-group">
+					    <label for="inputTown" class="control-label">Town</label>
+					    <select class="form-control" id="inputTown" ng-model="userData.townId">
+					    	<option value></option>
+					    	<option ng-repeat="town in towns" value="{{ town.id }}">{{ town.name }}</option>
+					    </select>
+				    </div>
+				    <div class="form-group">
+				    	<label>
+				        	<input type="checkbox" class="control-label" name="isAdmin" ng-model="userData.isAdmin"> Is Administrator?
+				        </label>
+				    </div>
+				    <div class="form-group">
+					    <div class="improve-margins">
+					    	<a href="#/admin/users" class="btn btn-default">Cancel</a>
+					    	<button class="btn btn-primary" ng-disabled="adminEditUserForm.$invalid" ng-click="editUserProfile(userData)">Update</button>
+					    </div>
+					</div>
+			    </fieldset>
+			</form>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="well">
+			<form class="form-horizontal" name="adminChangeUserPasswordForm" novalidate>
+				<fieldset>
+			    	<legend>Change User Password</legend>
+			    	<div class="form-group">
+				    	<label for="inputUsername" class="control-label">Username</label>
+				    	<input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username" ng-model="userData.username" disabled>
+				    </div>
+			    	<div class="form-group" ng-class="{'has-error': adminChangeUserPasswordForm.newPassword.$invalid && adminChangeUserPasswordForm.newPassword.$dirty}">
+				    	<label for="inputNewPassword" class="control-label">New Password</label>
+				    	<input type="password" required class="form-control" id="inputNewPassword" name="newPassword" placeholder="New Password" ng-model="userData.newPassword" ng-minlength="2" ng-maxlength="100">
+				    	<p ng-show="adminChangeUserPasswordForm.newPassword.$error.required && adminChangeUserPasswordForm.newPassword.$dirty" class="help-block">Password is required.</p>
+				    	<p ng-show="adminChangeUserPasswordForm.newPassword.$error.minlength" class="help-block">Password must be at least 2 characters.</p>
+				    	<p ng-show="adminChangeUserPasswordForm.newPassword.$error.maxlength" class="help-block">Password must be at most 100 characters.</p>
+				    </div>
+				    <div class="form-group" ng-class="{'has-error': (userData.confirmPassword != userData.newPassword) && adminChangeUserPasswordForm.confirmPassword.$dirty}">
+					    <label for="inputPassword" class="control-label">Confirm Password</label>
+					    <input type="password" required class="form-control" id="inputConfirmPassword" name="confirmPassword" placeholder="Confirm Password" ng-model="userData.confirmPassword">
+					    <p ng-show="(userData.confirmPassword != userData.newPassword) && adminChangeUserPasswordForm.confirmPassword.$dirty" class="help-block">Confirm password is not the same as new password.</p>
+				    </div>
+				    <div class="form-group">
+					    <div class="improve-margins">
+					    	<a href="#/admin/users" class="btn btn-default">Cancel</a>
+					    	<button class="btn btn-primary" ng-disabled="adminChangeUserPasswordForm.$invalid" ng-click="changeUserPassword(userData)">Change Password</button>
+					    </div>
+					</div>
+			    </fieldset>
+			</form>
+		</div>
+	</div>
+</div>

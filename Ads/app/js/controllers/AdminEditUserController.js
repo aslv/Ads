@@ -11,7 +11,13 @@ adsApp.controller('AdminEditUserController', ['$scope', '$route', '$sessionStora
 		);
 
 	function loadUserProfile() {
-		
+		$scope.userData = $sessionStorage.userToBeManipulated;
+		// console.log($scope.userData);
+		// console.log($scope.userData.townId);
+		if (!$scope.userData) {
+			notify.error('An error occured while loading user profile.');
+		}
+		// delete $sessionStorage.userToBeManipulated;
 	}
 	loadUserProfile();
 

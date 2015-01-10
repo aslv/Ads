@@ -18,7 +18,7 @@ adsApp.controller('AdminUsersController', ['$scope', '$location', '$sessionStora
 	}
 
 	$scope.editUser = function (userData) {
-		$sessionStorage.usedToBeManipulated = userData;
+		$sessionStorage.userToBeManipulated = userData;
 		// console.log('/admin/users/edit/' + encodeURIComponent(userData.username));
 		$location.path('/admin/users/edit/' + encodeURIComponent(userData.username));
 	}
