@@ -1,0 +1,72 @@
+<div ads-pagination></div>
+<div ng-show="adsLoading">
+	<h3 class="text-primary text-center">Loading...</h3>
+	<img src="images/loading.gif" />
+</div>
+<ul>
+	<li ng-repeat="ad in ads.ads">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<header class="row">
+					<h1 class="col-md-10">{{ ad.title }}</h1>
+					<span class="col-md-2">{{ ad.date | date:'d-MMM-yyyy' }}</span>
+				</header>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="well well-sm image-holder">
+							<img src="images/no-img.png" ng-src="{{ ad.imageDataUrl }}" alt="{{ ad.title }}" />
+						</div>
+					</div>
+					<div class="col-md-8">
+						<div class="well">
+							{{ ad.text }}
+						</div>
+						<div class="row">
+							<div class="row">
+								<div class="col-md-2">
+									<div><strong>Category</strong></div>
+								</div>
+								<div class="col-md-10">
+									<div class="well well-sm">{{ ad.categoryName }}</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-2">
+									<div><strong>Town</strong></div>
+								</div>
+								<div class="col-md-10">
+									<div class="well well-sm">{{ ad.townName }}</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3">
+								<div><strong>Status</strong></div>
+							</div>
+							<div class="col-md-9">
+								<div class="well well-sm">{{ ad.status }}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel-footer">
+				<div class="btn-group btn-group-justified">
+					<a href class="btn btn-success" ng-click="approveAd(ad.id)">Approve</a>
+					<a href class="btn btn-warning" ng-click="rejectAd(ad.id)">Reject</a>
+					<a href="#/admin/ads/edit/{{ ad.id }}" class="btn btn-info">Edit</a>
+					<a href="#/admin/ads/delete/{{ ad.id }}" class="btn btn-danger">Delete</a>
+				</div>
+			</div>
+		</div>
+	</li>
+</ul>
+
+<div ng-if="ads.numItems == 0">
+	<div class="alert alert-dismissable alert-warning">
+	  <button type="button" class="close" data-dismiss="alert">×</button>
+	  <h4>No ads</h4>
+	  <p>There are no ads with the required parametres, best change your filters or view <a href="#/" class="alert-link">all ads</a>.</p>
+	</div>
+</div>
+<div ads-pagination></div>
