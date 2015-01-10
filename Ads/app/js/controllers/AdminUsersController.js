@@ -11,33 +11,12 @@ adsApp.controller('AdminUsersController', ['$scope', '$rootScope', '$route', 'ad
 		if (param) {
 			$scope.usersParams.sortBy = param;
 		}
+		else {
+			delete $scope.usersParams.sortBy;
+		}
 		$scope.reloadUsers();
 	}
-
-	$scope.editUser = function(id) {/*
-		admin.approveAd(
-			id,
-			function success() {
-				notify.info('Ad approved!');
-				$route.reload();
-			},
-			function error(error) {
-				notify.error('An error occured while approving ad.', error);
-			}
-		);*/
-	}
-	$scope.deleteUser = function(id) {/*
-		admin.rejectAd(
-			id,
-			function success() {
-				notify.info('Ad rejected!');
-				$route.reload();
-			},
-			function error(error) {
-				notify.error('An error occured while rejecting ad.', error);
-			}
-		);*/
-	}/*
+	/*
 	$scope.$on('categorySelected', function (_, selectedCategoryId) {
 		$scope.adsParams.categoryId = selectedCategoryId;
 		$scope.adsParams.startPage = 1;

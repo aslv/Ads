@@ -62,6 +62,14 @@ adsApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
 		.when('/admin/users/list', {
 			redirectTo: '/admin/users'
 		})
+		.when('/admin/users/edit/:userName', {
+			templateUrl: 'templates/admin/edit-user.html',
+			controller: 'AdminEditUserController'
+		})
+		.when('/admin/users/delete/:userName', {
+			templateUrl: 'templates/admin/delete-user.html',
+			controller: 'AdminDeleteUserController'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
