@@ -6,6 +6,14 @@ adsApp.controller('AdminUsersController', ['$scope', '$rootScope', '$route', 'ad
 	$scope.reloadUsers = function () {
 		loadUsers($scope.usersParams);
 	}
+
+	$scope.sortBy = function (param) {
+		if (param) {
+			$scope.usersParams.sortBy = param;
+		}
+		$scope.reloadUsers();
+	}
+
 	$scope.editUser = function(id) {/*
 		admin.approveAd(
 			id,
