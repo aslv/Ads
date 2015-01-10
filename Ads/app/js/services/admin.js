@@ -26,6 +26,28 @@ adsApp.factory('admin', ['$http', '$sessionStorage', 'user', 'baseUrl', function
                 headers: user.getAuthHeaders(),
             };
             $http(request).success(success).error(error);
+		},
+		getAdById: function (id, success, error) {
+			var request = {
+                method: 'GET',
+                url: baseUrl + 'admin/ads/' + id,
+                headers: user.getAuthHeaders()
+            };
+            $http(request).success(success).error(error);
+		},
+		editAd: function (id, adData, success, error) {
+			var request = {
+                method: 'PUT',
+                url: baseUrl + 'admin/ads/' + id,
+                headers: user.getAuthHeaders(),
+                data: adData
+            };
+            $http(request).success(success).error(error);
+		},
+
+
+		getAllUsers: function () {
+			
 		}
 	};
 }]);

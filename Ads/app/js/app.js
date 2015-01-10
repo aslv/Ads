@@ -47,6 +47,14 @@ adsApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
 		.when('/admin/ads/list', {
 			redirectTo: '/admin/ads'
 		})
+		.when('/admin/ads/edit/:adId', {
+			templateUrl: 'templates/admin/edit-ad.html',
+			controller: 'AdminEditAdController'
+		})
+		.when('/admin/ads/delete/:adId', {
+			templateUrl: 'templates/admin/delete-ad.html',
+			controller: 'AdminDeleteAdController'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
