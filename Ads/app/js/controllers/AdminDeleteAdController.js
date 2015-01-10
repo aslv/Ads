@@ -1,11 +1,11 @@
-adsApp.controller('AdminDeleteAdController', ['$scope', '$location', '$routeParams', 'user', 'categories', 'towns', 'notify', function($scope, $location, $routeParams, user, categories, towns, notify) {
+adsApp.controller('AdminDeleteAdController', ['$scope', '$location', '$routeParams', 'admin', 'user', 'categories', 'towns', 'notify', function($scope, $location, $routeParams, admin, user, categories, towns, notify) {
 	$scope.adId = $routeParams.adId;
 
 	// setting inputs
 	loadCurrentAd($scope.adId);
 
 	$scope.deleteAd = function() {
-		user.deleteAd(
+		admin.deleteAd(
 			$scope.adId,
 			function success() {
 				notify.info('Ad successfully deleted!');
@@ -18,7 +18,7 @@ adsApp.controller('AdminDeleteAdController', ['$scope', '$location', '$routePara
 	}
 	
 	function loadCurrentAd(id) {
-		user.getAdById(
+		admin.getAdById(
 			id,
 			function success(data) {
 				$scope.adData = data;

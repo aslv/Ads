@@ -44,10 +44,17 @@ adsApp.factory('admin', ['$http', '$sessionStorage', 'user', 'baseUrl', function
             };
             $http(request).success(success).error(error);
 		},
-
+		deleteAd: function (id, success, error) {
+            var request = {
+                method: 'DELETE',
+                url: baseUrl + 'admin/ads/' + id,
+                headers: user.getAuthHeaders()
+            };
+            $http(request).success(success).error(error);
+        },
 
 		getAllUsers: function () {
-			
+
 		}
 	};
 }]);
