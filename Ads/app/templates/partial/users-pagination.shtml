@@ -1,0 +1,12 @@
+<div class="row">
+	<div class="col-md-12 text-center">
+		<pagination
+			total-items="users.numItems"
+			ng-model="usersParams.startPage"
+			items-per-page="usersParams.pageSize"
+			ng-change="reloadUsers()"
+			max-size="9"
+			boundary-links="true">
+		</pagination>
+	</div>
+</div>

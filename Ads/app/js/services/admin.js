@@ -52,9 +52,16 @@ adsApp.factory('admin', ['$http', '$sessionStorage', 'user', 'baseUrl', function
             };
             $http(request).success(success).error(error);
         },
-
-		getAllUsers: function () {
-
+		getAllUsers: function (params, success, error, loaded) {
+			var request = {
+                method: 'GET',
+                url: baseUrl + 'admin/users',
+                headers: user.getAuthHeaders(),
+                params: params
+            };
+            $http(request)
+                .then(success, error)
+                .finally(loaded);
 		}
 	};
 }]);

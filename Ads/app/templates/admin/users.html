@@ -1,0 +1,35 @@
+<div users-pagination></div>
+<div ng-show="usersLoading">
+	<h3 class="text-primary text-center">Loading...</h3>
+	<img src="images/loading.gif" />
+</div>
+<div>
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr class="info">
+				<th>Username</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>Town</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="user in users.users">
+				<td>{{ user.username }}</td>
+				<td>{{ user.name }}</td>
+				<td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+				<td><a href="tel:{{ user.phoneNumber }}">{{ user.phoneNumber }}</a></td>
+				<td>{{ user.townName }}</td>
+				<td>
+					<div class="btn-group btn-group-justified">
+						<a href class="btn btn-warning btn-sm">Edit</a>
+						<a href class="btn btn-danger btn-sm">Delete</a>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div users-pagination></div>
