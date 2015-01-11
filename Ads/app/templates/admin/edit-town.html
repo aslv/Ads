@@ -1,0 +1,20 @@
+<div class="well">
+	<form class="form-horizontal" name="editTownForm" novalidate>
+	  <fieldset>
+	    <legend>Edit Town</legend>
+	    <div class="form-group">
+	      <label for="inputTownName" class="col-lg-2 control-label">Town</label>
+	      <div class="col-lg-10" ng-class="{'has-error': editTownForm.townName.$invalid && editTownForm.townName.$dirty}">
+	        <input type="text" required class="form-control" id="inputTownName" name="townName" placeholder="Town" ng-model="town.name" />
+	        <p ng-show="editTownForm.townName.$invalid && editTownForm.townName.$dirty" class="help-block">Town is required.</p>
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <div class="col-lg-10 col-lg-offset-2">
+	        <a href="#/admin/towns" class="btn btn-default">Cancel</a>
+	        <button class="btn btn-primary" ng-disabled="editTownForm.$invalid" ng-click="editTown(town)">Edit</button>
+	      </div>
+	    </div>
+	  </fieldset>
+	</form>
+</div>
