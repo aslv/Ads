@@ -35,7 +35,7 @@ adsApp.controller('AdminTownsController', ['$scope', '$location', '$sessionStora
 		admin.getAllTowns(
 			params,
 			function success(data) {
-				console.log(data.data);
+				// console.log(data.data);
 				$scope.towns = data.data;
 			},
 			function error(error) {

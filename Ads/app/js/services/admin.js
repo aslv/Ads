@@ -155,5 +155,13 @@ adsApp.factory('admin', ['$http', '$sessionStorage', 'user', 'baseUrl', function
             };
             $http(request).success(success).error(error);
         },
+        deleteTown: function (townId, success, error) {
+        	var request = {
+                method: 'DELETE',
+                url: baseUrl + 'admin/towns/' + townId,
+                headers: user.getAuthHeaders()
+            };
+            $http(request).success(success).error(error);
+        }
 	};
 }]);
