@@ -1,22 +1,23 @@
 adsApp.factory('notify', function () {
 	return {
-		info: function (message) {/*
+		info: function (message) {
 			noty({
                 text: message,
-                type: 'info',
+                // type: 'info',
+                type: 'success',
                 layout: 'topCenter',
-                timeout: 1000
-            });*/window.alert(message);
+                timeout: 1500
+            });
 		},
-        warn: function (message) {/*
+        warn: function (message) {
             noty({
                 text: message,
                 type: 'warn',
                 layout: 'topCenter',
-                timeout: 1000
-            });*/window.alert(message);
+                timeout: 1500
+            });
         },
-		error: function (message, error) {/*
+		error: function (message, serverError) {
 			var errors = [];
             if (serverError && serverError.error_description) {
                 errors.push(serverError.error_description);
@@ -34,14 +35,14 @@ adsApp.factory('notify', function () {
                 }
             }
             if (errors.length > 0) {
-                message = message + ":<br>" + errors.join("<br>");
+                message = message + '<br>Server responded:<br>' + errors.join('<br>');
             }
             noty({
                 text: message,
                 type: 'error',
                 layout: 'topCenter',
-                timeout: 5000
-            });*/window.alert(message + ' ' + error);
+                timeout: 3500
+            });
 		}
 	};
 });
