@@ -41,11 +41,14 @@
 					<div class="well well-sm"><a href="tel:{{ userData.phoneNumber }}">{{ userData.phoneNumber }}</a></div>
 				</div>
 			</div>
+			<div>
+				<p class="text-primary">Deleting the user will also delete all ads, created by this user!</p>
+			</div>
 		</div>
 	</div>
 	<div class="panel-footer">
 		<div class="improve-margins">
-	        <a href="#/admin/user" class="btn btn-default">Cancel</a>
+	        <a href="#/admin/users" class="btn btn-default">Cancel</a>
 	        <button class="btn btn-primary" ng-click="deleteUser(userData)">Delete</button>
     	</div>
 	</div>

@@ -70,6 +70,25 @@ adsApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
 			templateUrl: 'templates/admin/delete-user.html',
 			controller: 'AdminDeleteUserController'
 		})
+		.when('/admin/categories', {
+			templateUrl: 'templates/admin/categories.html',
+			controller: 'AdminCategoriesController'
+		})
+		.when('/admin/categories/list', {
+			redirectTo: '/admin/users'
+		})
+		.when('/admin/categories/create', {
+			templateUrl: 'templates/admin/create-category.html',
+			controller: 'AdminCreateCategoryController'
+		})
+		.when('/admin/categories/edit/:categoryName', {
+			templateUrl: 'templates/admin/edit-category.html',
+			controller: 'AdminEditCategoryController'
+		})
+		.when('/admin/categories/delete/:categoryName', {
+			templateUrl: 'templates/admin/delete-category.html',
+			controller: 'AdminDeleteCategoryController'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
@@ -82,7 +101,7 @@ adsApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
 	*/
 }]);
 
-adsApp.run(['$rootScope', '$location', 'admin', 'user', 'notify', function($rootScope, $location, admin, user, notify) {
+adsApp.run(['$rootScope', '$location', 'user', 'notify', function($rootScope, $location, user, notify) {
 	$rootScope.$on('$locationChangeStart', function (_) {
 		if ($location.path().indexOf('/user/') != -1 && !user.isLoggedIn()) {
 			notify.warn('Only authorized users can access this resource!');

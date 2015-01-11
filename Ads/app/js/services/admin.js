@@ -88,6 +88,43 @@ adsApp.factory('admin', ['$http', '$sessionStorage', 'user', 'baseUrl', function
                 headers: user.getAuthHeaders()
             };
             $http(request).success(success).error(error);
+        },
+        getAllCategories: function (params, success, error, loaded) {
+        	var request = {
+                method: 'GET',
+                url: baseUrl + 'admin/categories',
+                headers: user.getAuthHeaders(),
+                params: params
+            };
+            $http(request)
+                .then(success, error)
+                .finally(loaded);
+        },
+        createCategory: function (categoryData, success, error) {
+        	var request = {
+                method: 'POST',
+                url: baseUrl + 'admin/categories',
+                headers: user.getAuthHeaders(),
+                data: categoryData
+            };
+            $http(request).success(success).error(error);
+        },
+        editCategory: function (categoryId, categoryData, success, error) {
+        	var request = {
+                method: 'PUT',
+                url: baseUrl + 'admin/categories/' + categoryId,
+                headers: user.getAuthHeaders(),
+                data: categoryData
+            };
+            $http(request).success(success).error(error);
+        },
+        deleteCategory: function (categoryId, success, error) {
+        	var request = {
+                method: 'DELETE',
+                url: baseUrl + 'admin/categories/' + categoryId,
+                headers: user.getAuthHeaders()
+            };
+            $http(request).success(success).error(error);
         }
 	};
 }]);
