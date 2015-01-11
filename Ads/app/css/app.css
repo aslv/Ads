@@ -1,11 +1,10 @@
 header h1,
 .well,
-td {
+td,
+.break-text {
 	word-wrap: break-word;
-}/*
-a {
 	word-break: break-all;
-}*/
+}
 .improve-margins {
 	margin: 0 15px;
 }
@@ -32,4 +31,10 @@ ul li {
 .image-holder {
 	text-align: center;
 	vertical-align: middle;
+}
+.admin-users td {
+	width: 16.66666667%;
+}
+.admin-items td {
+	width: 33.33333333%;
 }
