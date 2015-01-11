@@ -3,8 +3,8 @@ adsApp.factory('notify', function () {
 		info: function (message) {
 			noty({
                 text: message,
-                // type: 'info',
-                type: 'success',
+                type: 'info',
+                // type: 'success',
                 layout: 'topCenter',
                 timeout: 1500
             });

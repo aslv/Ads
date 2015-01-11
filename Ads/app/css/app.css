@@ -1,6 +1,11 @@
-* {
+header h1,
+.well,
+td {
 	word-wrap: break-word;
-}
+}/*
+a {
+	word-break: break-all;
+}*/
 .improve-margins {
 	margin: 0 15px;
 }
