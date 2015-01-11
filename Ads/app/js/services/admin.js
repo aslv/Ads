@@ -136,6 +136,15 @@ adsApp.factory('admin', ['$http', '$sessionStorage', 'user', 'baseUrl', function
             $http(request)
                 .then(success, error)
                 .finally(loaded);
+        },
+        createTown: function (townData, success, error) {
+        	var request = {
+                method: 'POST',
+                url: baseUrl + 'admin/towns',
+                headers: user.getAuthHeaders(),
+                data: townData
+            };
+            $http(request).success(success).error(error);
         }
 	};
 }]);
