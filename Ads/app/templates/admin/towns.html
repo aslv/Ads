@@ -1,0 +1,52 @@
+<div towns-pagination></div>
+<div ng-show="townsLoading">
+	<h3 class="text-primary text-center">Loading...</h3>
+	<img src="images/loading.gif" />
+</div>
+<div>
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr class="info">
+				<th>
+					Id
+					<div class="btn-group">
+						<button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+						<ul class="dropdown-menu">
+					    	<li><a href ng-click="sortBy('Id')">Sort ascending</a></li>
+					    	<li><a href ng-click="sortBy('-Id')">Sort descending</a></li>
+					    	<li class="divider"></li>
+					    	<li><a href ng-click="sortBy(null)">Remove sorting</a></li>
+						</ul>
+					</div>
+				</th>
+				<th>
+					Town
+					<div class="btn-group">
+						<button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+						<ul class="dropdown-menu">
+					    	<li><a href ng-click="sortBy('Name')">Sort ascending</a></li>
+					    	<li><a href ng-click="sortBy('-Name')">Sort descending</a></li>
+					    	<li class="divider"></li>
+					    	<li><a href ng-click="sortBy(null)">Remove sorting</a></li>
+						</ul>
+					</div>
+				</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="town in towns.towns">
+				<td>{{ town.id }}</td>
+				<td>{{ town.username }}</td>
+				<td>
+					<div class="btn-group btn-group-justified">
+						<a href ng-click="editTown(category)" class="btn btn-warning btn-sm">Edit</a>
+						<a href ng-click="deleteTown(category)" class="btn btn-danger btn-sm">Delete</a>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div towns-pagination></div>
+<a href="#/admin/towns/create" class="btn btn-default btn-lg btn-block btn-success">Create New Town</a>

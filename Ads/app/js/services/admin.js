@@ -125,6 +125,17 @@ adsApp.factory('admin', ['$http', '$sessionStorage', 'user', 'baseUrl', function
                 headers: user.getAuthHeaders()
             };
             $http(request).success(success).error(error);
+        },
+        getAllTowns: function (params, success, error, loaded) {
+        	var request = {
+                method: 'GET',
+                url: baseUrl + 'admin/towns',
+                headers: user.getAuthHeaders(),
+                params: params
+            };
+            $http(request)
+                .then(success, error)
+                .finally(loaded);
         }
 	};
 }]);
