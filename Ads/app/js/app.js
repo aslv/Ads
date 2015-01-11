@@ -75,19 +75,38 @@ adsApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
 			controller: 'AdminCategoriesController'
 		})
 		.when('/admin/categories/list', {
-			redirectTo: '/admin/users'
+			redirectTo: '/admin/categories'
 		})
 		.when('/admin/categories/create', {
 			templateUrl: 'templates/admin/create-category.html',
 			controller: 'AdminCreateCategoryController'
 		})
-		.when('/admin/categories/edit/:categoryName', {
+		.when('/admin/categories/edit/:categoryId', {
 			templateUrl: 'templates/admin/edit-category.html',
 			controller: 'AdminEditCategoryController'
 		})
-		.when('/admin/categories/delete/:categoryName', {
+		.when('/admin/categories/delete/:categoryId', {
 			templateUrl: 'templates/admin/delete-category.html',
 			controller: 'AdminDeleteCategoryController'
+		})
+		.when('/admin/towns', {
+			templateUrl: 'templates/admin/towns.html',
+			controller: 'AdminTownsController'
+		})
+		.when('/admin/towns/list', {
+			redirectTo: '/admin/towns'
+		})
+		.when('/admin/towns/create', {
+			templateUrl: 'templates/admin/create-town.html',
+			controller: 'AdminCreateTownController'
+		})
+		.when('/admin/towns/edit/:townId', {
+			templateUrl: 'templates/admin/edit-town.html',
+			controller: 'AdminEditTownController'
+		})
+		.when('/admin/towns/delete/:townId', {
+			templateUrl: 'templates/admin/delete-town.html',
+			controller: 'AdminDeleteTownController'
 		})
 		.otherwise({
 			redirectTo: '/'
