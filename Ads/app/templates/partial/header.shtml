@@ -6,13 +6,21 @@
       <span class="icon-bar"></span>
     </button>
     <a class="navbar-brand" href="#/">
-      Ads - 
+      Ads 
+      <span ng-show="user.isAdmin()">Administration</span>
+      -
       <span ng-switch="location.path()">
         <span ng-switch-when="/login">Login</span>
         <span ng-switch-when="/register">Registration</span>
         <span ng-switch-when="/user/ads">My Ads</span>
         <span ng-switch-when="/user/ads/publish">Publish New Ad</span>
         <span ng-switch-when="/user/profile/edit">Edit User Profile</span>
+        <span ng-switch-when="/admin/ads">Ads</span>
+        <span ng-switch-when="/admin/users">Users</span>
+        <span ng-switch-when="/admin/categories">Categories</span>
+        <span ng-switch-when="/admin/categories/create">Create Category</span>
+        <span ng-switch-when="/admin/towns">Towns</span>
+        <span ng-switch-when="/admin/towns/create">Create Town</span>
         <span ng-switch-default>Home</span>
       </span>
     </a>
