@@ -34,4 +34,14 @@
 		</div>
 		<div status-filter></div>
 	</div>
+	<!--
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+	  		<h4 class="panel-title">Items Per Page</h4>
+		</div>
+		<div class="panel-body">
+	  		<input type="number" class="form-control" min="1" max="1000" step="1" ng-model="itemsPerPage" onchange="setItemsPerPage(itemsPerPage)" />
+		</div>
+	</div>
+	-->
 </div>
